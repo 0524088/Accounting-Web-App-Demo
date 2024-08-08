@@ -576,7 +576,7 @@ registerPlugin("CapacitorHttp", {
   web: () => new CapacitorHttpPluginWeb()
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web.22c6ee79.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web.c33247fa.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
 });
 async function storage_setItem(key, value) {
   await Preferences.set({
@@ -3191,10 +3191,10 @@ var Encoding;
   Encoding2["UTF16"] = "utf16";
 })(Encoding || (Encoding = {}));
 registerPlugin("Filesystem", {
-  web: () => __vitePreload(() => import("./web.7aa75154.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
+  web: () => __vitePreload(() => import("./web.27e50e40.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
 });
 const App = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web.43b5c349.js"), true ? [] : void 0).then((m) => new m.AppWeb())
+  web: () => __vitePreload(() => import("./web.80575782.js"), true ? [] : void 0).then((m) => new m.AppWeb())
 });
 var defaultSetting = {
   "custom": {
