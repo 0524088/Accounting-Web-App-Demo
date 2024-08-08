@@ -161,6 +161,9 @@ nav {
     overflow-x: auto;
     white-space: nowrap;
 }
+.progress-item span.number {
+    letter-spacing: 1px;
+}
 .items-rounded {
     border-radius: 1.5rem;
 }

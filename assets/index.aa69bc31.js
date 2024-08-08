@@ -576,7 +576,7 @@ registerPlugin("CapacitorHttp", {
   web: () => new CapacitorHttpPluginWeb()
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web.415bd0a9.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web.26a9dded.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
 });
 async function storage_setItem(key, value) {
   await Preferences.set({
@@ -3191,10 +3191,10 @@ var Encoding;
   Encoding2["UTF16"] = "utf16";
 })(Encoding || (Encoding = {}));
 registerPlugin("Filesystem", {
-  web: () => __vitePreload(() => import("./web.201b8380.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
+  web: () => __vitePreload(() => import("./web.b69c9e1b.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
 });
 const App = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web.0b627d37.js"), true ? [] : void 0).then((m) => new m.AppWeb())
+  web: () => __vitePreload(() => import("./web.73e658c8.js"), true ? [] : void 0).then((m) => new m.AppWeb())
 });
 var defaultSetting = {
   "custom": {
@@ -5912,8 +5912,10 @@ function renderBarHTML(item, param, isGoal) {
       return "";
     progressHTML = `
             <div class="d-flex justify-content-end">
-                <span class="percent d-none" style="color: white;">${convert2ThousandsSeparator(current.amount)}</span>
-                <span class="number" style="color: white;">$${convert2ThousandsSeparator(current.amount)}</span>
+                <span class="progress-item">
+                    <span class="percent d-none" style="color: white;">${convert2ThousandsSeparator(current.amount)}</span>
+                    <span class="number" style="color: white;">$${convert2ThousandsSeparator(current.amount)}</span>
+                </span>
             </div>
             <div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: 100%; background-color: ${getBarColor("amount")};" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -5933,7 +5935,7 @@ function renderBarHTML(item, param, isGoal) {
       goalNumber = total;
       progressHTML = `
                 <div class="d-flex justify-content-end">
-                    <span class="progress-item">    
+                    <span class="progress-item">
                         <span class="percent d-none" style="color: ${getAmountAlertColor(value[0] + value[1])}">${percent}%</span>
                         <span class="number" style="color: ${getAmountAlertColor(value[0] + value[1])}">$${convert2ThousandsSeparator(currentNumber)}/${convert2ThousandsSeparator(goalNumber)}</span>
                     </span>
@@ -6013,23 +6015,26 @@ function renderBarHTML(item, param, isGoal) {
     let html;
     if (!backgroundColor2)
       backgroundColor2 = getDefaultColor();
+    const nav_html = `
+            <div class="d-flex ms-auto align-items-center gap-2 mb-1 d-none nav_item">
+                <input class="form-check-input mb-auto select_item" type="checkbox">
+                <i class="bi bi-filter-circle-fill mb-auto sort_item"></i>
+                <!--
+                <i class="bi bi-three-dots setting_item" data-bs-toggle="dropdown"></i>
+                <ul class="dropdown-menu item-setting-dropdown" data-name="${name2}">
+                    <li><a class="dropdown-item fw-bold h5" data-action="detail"><i class="bi bi-journal-text"></i>&nbsp\u8A73\u7D30</a></li>
+                    <li><a class="dropdown-item fw-bold h5" data-action="rename"><i class="bi bi-pencil-square"></i>&nbsp;\u91CD\u65B0\u547D\u540D</a></li>
+                    <li><a class="dropdown-item fw-bold h5 text-danger" data-action="delete"><i class="bi bi-trash3-fill"></i>&nbsp;\u522A\u9664</a></li>
+                </ul>
+                -->
+            </div>
+        `;
     html = `
-            <div class="${isGoal2 ? "" : "items"} items-rounded" data-sort-name="${name2}" style="background-color: ${backgroundColor2}">
+            <div class="${isGoal2 ? "unsortable" : "items"} items-rounded" data-sort-name="${name2}" style="background-color: ${backgroundColor2}">
                 <div class="pb-4 pt-4 mt-2 mb-2 ms-4 me-4">
                     <div class="d-flex align-items-center justify-content-start mb-2 gap-2">
                         <label class="form-label text-light h5 mb-1 item-long-word mw-100 ${mode2 == "i-mode" ? "text-center flex-grow-1" : ""}">${name2}</label>
-                        <div class="d-flex ms-auto align-items-center gap-2 mb-1 d-none nav_item">
-                            <input class="form-check-input mb-auto select_item" type="checkbox">
-                            <i class="bi bi-filter-circle-fill mb-auto sort_item"></i>
-                            <!--
-                            <i class="bi bi-three-dots setting_item" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu item-setting-dropdown" data-name="${name2}">
-                                <li><a class="dropdown-item fw-bold h5" data-action="detail"><i class="bi bi-journal-text"></i>&nbsp\u8A73\u7D30</a></li>
-                                <li><a class="dropdown-item fw-bold h5" data-action="rename"><i class="bi bi-pencil-square"></i>&nbsp;\u91CD\u65B0\u547D\u540D</a></li>
-                                <li><a class="dropdown-item fw-bold h5 text-danger" data-action="delete"><i class="bi bi-trash3-fill"></i>&nbsp;\u522A\u9664</a></li>
-                            </ul>
-                            -->
-                        </div>
+                        ${isGoal2 ? "" : nav_html}
                     </div>
                     ${progressHTML2}
                 </div>
