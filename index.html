@@ -20,11 +20,8 @@
         
         
         
-
-        <!-- chart.js -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <script type="module" crossorigin src="/Accounting-Web-App-Demo/assets/index.a23007ad.js"></script>
-      <link rel="stylesheet" href="/Accounting-Web-App-Demo/assets/index.2dd7e533.css">
+      <script type="module" crossorigin src="/Accounting-Web-App-Demo/assets/index.6943af7d.js"></script>
+      <link rel="stylesheet" href="/Accounting-Web-App-Demo/assets/index.fe8140de.css">
     </head>
 
     <body>
@@ -48,7 +45,7 @@
             </div>
         </div>
 
-        <div class="offcanvas offcanvas-start bg-dark-gray w-60vw" id="slideMenu" tabindex="-1">
+        <div class="offcanvas offcanvas-start bg-blue w-60vw" id="slideMenu" tabindex="-1">
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end">
                     <li class="nav-item h2">
@@ -67,74 +64,24 @@
             </div>
         </div>
 
-<!--
-        <nav class="border border-1 bg-white">
-            <div class="d-flex align-items-center justify-content-between m-1 menu-main">
-                <div class="h1 m-1" data-belong="main" data-bs-toggle="offcanvas" data-bs-target="#slideMenu"><i class="bi bi-list"></i></div>
-                
-                <div id="carouselData" class="carousel justify-content-center h2 mb-0" data-belong="sub" data-bs-touch="false" data-bs-interval="false">
-                    <div class="carousel-inner h-100"></div>
-                    <button class="carousel-control carousel-control-prev" type="button" data-bs-target="#carouselData" data-bs-slide="prev">
-                        <i class="bi bi-caret-left-fill"></i>
-                    </button>
-                    <button class="carousel-control carousel-control-next" type="button" data-bs-target="#carouselData" data-bs-slide="next">
-                        <i class="bi bi-caret-right-fill"></i>
-                    </button>
-                </div>
-
-                <div class="d-flex h2 mt-1 mb-1 me-1 gap-1">
-                    <i class="bi bi-gear d-none" data-belong="sub"></i>
-                    <i class="bi bi-plus-square d-none" data-belong="sub" data-bs-toggle="modal" data-bs-target="#inputModal"></i>
-                    <i class="bi bi-caret-down-fill" data-belong="sub"></i>
-                </div>
-            </div>
-        </nav>
--->
-
-        <nav class="navbar bg-dark-gray">
-            <div class="container-fluid d-flex align-items-center justify-content-between">
-                <div class="h1 m-1" data-belong="main" data-bs-toggle="offcanvas" data-bs-target="#slideMenu">
-                    <i class="text-light bi bi-list"></i>
-                </div>
-                
-                <div id="carouselData" class="carousel justify-content-center text-light h2 mb-0" data-belong="sub" data-bs-touch="false" data-bs-interval="false">
-                    <div class="carousel-inner h-100"></div>
-                    <button class="carousel-control carousel-control-prev" type="button" data-bs-target="#carouselData" data-bs-slide="prev">
-                        <i class="text-light bi-caret-left-fill"></i>
-                    </button>
-                    <button class="carousel-control carousel-control-next" type="button" data-bs-target="#carouselData" data-bs-slide="next">
-                        <i class="text-light bi-caret-right-fill"></i>
-                    </button>
-                </div>
-
-                <div class="d-flex h2 m-1 gap-1">
-                    <i class="text-light bi-gear d-none" data-belong=""></i>
-                    <i class="text-light bi-plus-square d-none" data-belong="" data-bs-toggle="modal" data-bs-target="#inputModal"></i>
-                    <i class="text-light bi bi-triangle chart-collapse-button" data-belong="sub" data-bs-toggle="collapse" data-bs-target="#chartCollapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"></i>
-                </div>
-
-                <div class="collapse navbar-collapse" id="chartCollapse">
-                    <div class="d-flex align-items-center justify-content-center">
-                        <canvas id="pieChart" class="m-3"></canvas>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        
         <div class="container-sm mt-1">
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="home">
-                    <!--
-                    <div class="nav-button transparent-scroll m-2">
-                        <input type="checkbox" class="btn-check" id="btn-change-mode" checked>
-                        <label class="btn btn-outline-success m-1" for="btn-change-mode">總額模式</label>
+                <div class="tab-pane fade show active h-90vh" id="home">
+                    <div class="d-flex align-items-end justify-content-start h-10vh">
+                        <div id="carouselData" class="carousel d-flex align-items-center justify-content-between h1 fw-bold" data-belong="sub" data-bs-touch="false" data-bs-interval="false">
+                            <button class="carousel-control carousel-control-prev" type="button" data-bs-target="#carouselData" data-bs-slide="prev">
+                                <i class="bi bi-caret-left-fill"></i>
+                            </button>
+                            <div class="carousel-inner h-100"></div>
+                            <button class="carousel-control carousel-control-next" type="button" data-bs-target="#carouselData" data-bs-slide="next">
+                                <i class="bi bi-caret-right-fill"></i>
+                            </button>
+                        </div>
                     </div>
-                    -->
-                    <div class="container-fluid data-content transparent-scroll h-90vh px-0" id="home-content"></div>
-                    <button class="circle-button bg-dark-gray" data-bs-toggle="modal" data-bs-target="#inputModal"><i class="fs-3 bi bi-plus-lg"></i></button>
+                    <div class="container-fluid data-content transparent-scroll px-0 h-80vh" id="home-content"></div>
                 </div>
-                <div class="tab-pane fade" id="setting">
-                    <div class="container-fluid data-content transparent-scroll h-90vh" id="setting-content">
+                <div class="tab-pane fade h-90vh" id="setting">
+                    <div class="container-fluid data-content transparent-scroll" id="setting-content">
                         <!--因為可以直接從上方按鈕做切換所以先隱藏此設定 -->
                         <div class="mt-3 mb-3">
                             <legend>預設顯示模式</legend>
@@ -164,15 +111,6 @@
                             <hr>
                         </div>
                         <div class="mb-3">
-                            <legend>預設展開總覽</legend>
-                            <div class="form-check form-switch form-switch_custom fw-bold">
-                                <label class="form-check-label">關</label>
-                                <input class="form-switch-input ms-1 me-1 h5 mt-2" type="checkbox" id="ShowChart">
-                                <label class="form-check-label">開</label>
-                            </div>
-                            <hr>
-                        </div>
-                        <div class="mb-3">
                             <legend>testing data switch</legend>
                             <div class="form-check form-switch form-switch_custom fw-bold">
                                 <label class="form-check-label">關</label>
@@ -183,8 +121,45 @@
                         </div>
                     </div>
                 </div>
+                <div class="tab-pane fade h-90vh" id="export"></div>
             </div>
         </div>
+
+        <nav class="h-10vh">
+            <div class="d-flex align-items-center justify-content-around">
+                <div class="nav-item text-center">
+                    <a class="nav-link active" href="#" data-tab-target="#home">
+                        <i class="fs-2 bi bi-list-task"></i>
+                        <span>總覽</span>
+                    </a>
+                </div>
+                <div class="nav-item text-center">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#accountingDetailModal">
+                        <i class="fs-2 bi bi-coin"></i>
+                        <span>記帳</span>
+                    </a>
+                </div>
+                
+                <div class="nav-item text-center">
+                    <button class="menu-circle-button bg-blue" data-bs-toggle="modal" data-bs-target="#inputModal"><i class="fs-3 bi bi-plus-lg"></i></button>
+                </div>
+    
+                <div class="nav-item text-center">
+                    <a class="nav-link" href="#" data-tab-target="#setting">
+                        <i class="fs-2 bi bi-gear-fill"></i>
+                        <span>設定</span>
+                    </a>
+                </div>
+    
+                <div class="nav-item text-center">
+                    <a class="nav-link" href="#" data-tab-target="#export">
+                        <i class="fs-2 bi-file-earmark-arrow-down-fill"></i>
+                        <span>匯出</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
         <!-- Modal -->
         <div class="modal fade" id="pickrModal" data-bs-backdrop="false" data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered">
@@ -256,7 +231,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="content"></div>
-                        <button class="circle-button open-accountingModal bg-dark-gray"><i class="fs-3 bi bi-plus-lg"></i></button>
+                        <button class="menu-circle-button open-accountingModal bg-blue"><i class="fs-3 bi bi-plus-lg"></i></button>
                     </div>
                 </div>
             </div>
