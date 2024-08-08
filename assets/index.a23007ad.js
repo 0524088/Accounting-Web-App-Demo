@@ -48,7 +48,7 @@ const p = function polyfill() {
 p();
 const scriptRel = "modulepreload";
 const seen = {};
-const base = "/";
+const base = "/Accounting-Web-App-Demo/";
 const __vitePreload = function preload(baseModule, deps) {
   if (!deps || deps.length === 0) {
     return baseModule();
@@ -576,7 +576,7 @@ registerPlugin("CapacitorHttp", {
   web: () => new CapacitorHttpPluginWeb()
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web.22c6ee79.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web.8c913713.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
 });
 async function storage_setItem(key, value) {
   await Preferences.set({
@@ -3191,10 +3191,10 @@ var Encoding;
   Encoding2["UTF16"] = "utf16";
 })(Encoding || (Encoding = {}));
 registerPlugin("Filesystem", {
-  web: () => __vitePreload(() => import("./web.7aa75154.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
+  web: () => __vitePreload(() => import("./web.efe331cf.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
 });
 const App = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web.43b5c349.js"), true ? [] : void 0).then((m) => new m.AppWeb())
+  web: () => __vitePreload(() => import("./web.05671b60.js"), true ? [] : void 0).then((m) => new m.AppWeb())
 });
 var defaultSetting = {
   "custom": {
