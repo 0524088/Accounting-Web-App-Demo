@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="zh-TW" dir="ltr">
+    <head>
+        <meta charset="UTF-8" />
+        <title>記帳 App</title>
+        <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+
+        <script type="module" src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.esm.js"></script>
+        <script nomodule src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.js"></script>
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.5f54aa43.ico" />
+        <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkFwcCIsCiAgInNob3J0X25hbWUiOiAiQXBwIiwKICAic3RhcnRfdXJsIjogImluZGV4Lmh0bWwiLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJpY29ucyI6IFt7CiAgICAic3JjIjogImFzc2V0cy9pbWdzL2xvZ28ucG5nIiwKICAgICJzaXplcyI6ICI1MTJ4NTEyIiwKICAgICJ0eXBlIjogImltYWdlL3BuZyIKICB9XSwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMzFkNTNkIiwKICAidGhlbWVfY29sb3IiOiAiIzMxZDUzZCIKfQo=" />
+
+        <!-- Bootstrap 5 -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+        
+        
+        
+
+        <!-- chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script type="module" crossorigin src="/assets/index.7c2264fc.js"></script>
+      <link rel="stylesheet" href="/assets/index.3c6a6ebf.css">
+    </head>
+
+    <body>
+        <div class="version-label">Version 0.4.0</div>
+        <div id="item-main-nav" class="h1 p-3 bg-dark d-flex align-items-center justify-content-between text-light d-none">
+            <div class="d-flex align-items-center gap-4">
+                <i class="bi bi-x-lg item-main-nav-btn" data-action="close"></i>
+                <lable class="count" data-count="0">已選取 0 項</lable>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-trash3-fill item-main-nav-btn" data-action="remove"></i>
+                <i class="bi bi-check-square item-main-nav-btn" data-action="select_all"></i>
+                <!--
+                <i class="bi bi-three-dots item-main-nav-btn" data-bs-toggle="dropdown"></i>
+                <ul class="dropdown-menu item-setting-dropdown">
+                    <li><a class="dropdown-item fw-bold h5" data-action="detail"><i class="bi bi-journal-text"></i>&nbsp詳細</a></li>
+                    <li><a class="dropdown-item fw-bold h5" data-action="rename"><i class="bi bi-pencil-square"></i>&nbsp;重新命名</a></li>
+                    <li><a class="dropdown-item fw-bold h5 text-danger" data-action="delete"><i class="bi bi-trash3-fill"></i>&nbsp;刪除</a></li>
+                </ul>
+                -->
+            </div>
+        </div>
+
+        <div class="offcanvas offcanvas-start bg-dark-gray w-60vw" id="slideMenu" tabindex="-1">
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item h2">
+                        <a class="nav-link active" aria-current="page" href="#" data-nav-belong="main" data-tab-target="#home"><span class="text-light"><i class="text-light bi bi-bank2"></i> 總覽</span></a>
+                    </li>
+                    <li class="nav-item h2">
+                        <a class="nav-link" aria-current="page" href="#" data-nav-belong="sub" data-bs-toggle="modal" data-bs-target="#accountingDetailModal"><span class="text-light"><i class="bi bi-coin"></i> 記帳細項</span></a>
+                    </li>
+                    <li class="nav-item h2">
+                        <a class="nav-link" aria-current="page" href="#" data-nav-belong="sub" data-tab-target="#setting"><span class="text-light"><i class="bi bi-gear-fill"></i> 設定</span></a>
+                    </li>
+                    <li class="nav-item h2">
+                        <a class="nav-link" aria-current="page" href="#" data-nav-belong="sub" data-tab-target="#export"><span class="text-light"><i class="bi bi-file-earmark-arrow-down-fill"></i> 匯出資料</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+<!--
+        <nav class="border border-1 bg-white">
+            <div class="d-flex align-items-center justify-content-between m-1 menu-main">
+                <div class="h1 m-1" data-belong="main" data-bs-toggle="offcanvas" data-bs-target="#slideMenu"><i class="bi bi-list"></i></div>
+                
+                <div id="carouselData" class="carousel justify-content-center h2 mb-0" data-belong="sub" data-bs-touch="false" data-bs-interval="false">
+                    <div class="carousel-inner h-100"></div>
+                    <button class="carousel-control carousel-control-prev" type="button" data-bs-target="#carouselData" data-bs-slide="prev">
+                        <i class="bi bi-caret-left-fill"></i>
+                    </button>
+                    <button class="carousel-control carousel-control-next" type="button" data-bs-target="#carouselData" data-bs-slide="next">
+                        <i class="bi bi-caret-right-fill"></i>
+                    </button>
+                </div>
+
+                <div class="d-flex h2 mt-1 mb-1 me-1 gap-1">
+                    <i class="bi bi-gear d-none" data-belong="sub"></i>
+                    <i class="bi bi-plus-square d-none" data-belong="sub" data-bs-toggle="modal" data-bs-target="#inputModal"></i>
+                    <i class="bi bi-caret-down-fill" data-belong="sub"></i>
+                </div>
+            </div>
+        </nav>
+-->
+
+        <nav class="navbar bg-dark-gray">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+                <div class="h1 m-1" data-belong="main" data-bs-toggle="offcanvas" data-bs-target="#slideMenu">
+                    <i class="text-light bi bi-list"></i>
+                </div>
+                
+                <div id="carouselData" class="carousel justify-content-center text-light h2 mb-0" data-belong="sub" data-bs-touch="false" data-bs-interval="false">
+                    <div class="carousel-inner h-100"></div>
+                    <button class="carousel-control carousel-control-prev" type="button" data-bs-target="#carouselData" data-bs-slide="prev">
+                        <i class="text-light bi-caret-left-fill"></i>
+                    </button>
+                    <button class="carousel-control carousel-control-next" type="button" data-bs-target="#carouselData" data-bs-slide="next">
+                        <i class="text-light bi-caret-right-fill"></i>
+                    </button>
+                </div>
+
+                <div class="d-flex h2 m-1 gap-1">
+                    <i class="text-light bi-gear d-none" data-belong=""></i>
+                    <i class="text-light bi-plus-square d-none" data-belong="" data-bs-toggle="modal" data-bs-target="#inputModal"></i>
+                    <i class="text-light bi bi-triangle chart-collapse-button" data-belong="sub" data-bs-toggle="collapse" data-bs-target="#chartCollapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"></i>
+                </div>
+
+                <div class="collapse navbar-collapse" id="chartCollapse">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <canvas id="pieChart" class="m-3"></canvas>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container-sm mt-1">
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="home">
+                    <!--
+                    <div class="nav-button transparent-scroll m-2">
+                        <input type="checkbox" class="btn-check" id="btn-change-mode" checked>
+                        <label class="btn btn-outline-success m-1" for="btn-change-mode">總額模式</label>
+                    </div>
+                    -->
+                    <div class="container-fluid data-content transparent-scroll h-90vh px-0" id="home-content"></div>
+                    <button class="circle-button bg-dark-gray" data-bs-toggle="modal" data-bs-target="#inputModal"><i class="fs-3 bi bi-plus-lg"></i></button>
+                </div>
+                <div class="tab-pane fade" id="setting">
+                    <div class="container-fluid data-content transparent-scroll h-90vh" id="setting-content">
+                        <!--因為可以直接從上方按鈕做切換所以先隱藏此設定 -->
+                        <div class="mt-3 mb-3">
+                            <legend>預設顯示模式</legend>
+                            <div class="form-check form-switch form-switch_custom fw-bold">
+                                <label class="form-check-label">個別</label>
+                                <input class="form-switch-input form-switch-input-both ms-1 me-1 h5 mt-2" type="checkbox" id="Mode">
+                                <label class="form-check-label">總額</label>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="mt-3 mb-3">
+                            <legend>預設長條圖顯示模式</legend>
+                            <div class="form-check form-switch form-switch_custom fw-bold">
+                                <label class="form-check-label">百分比</label>
+                                <input class="form-switch-input form-switch-input-both ms-1 me-1 h5 mt-2" type="checkbox" id="ShowType">
+                                <label class="form-check-label">數字</label>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="mb-3">
+                            <legend>新增目標預設排序</legend>
+                            <div class="form-check form-switch form-switch_custom fw-bold">
+                                <label class="form-check-label">下方</label>
+                                <input class="form-switch-input form-switch-input-both ms-1 me-1 h5 mt-2" type="checkbox" id="NewItemPosition">
+                                <label class="form-check-label">上方</label>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="mb-3">
+                            <legend>預設展開總覽</legend>
+                            <div class="form-check form-switch form-switch_custom fw-bold">
+                                <label class="form-check-label">關</label>
+                                <input class="form-switch-input ms-1 me-1 h5 mt-2" type="checkbox" id="ShowChart">
+                                <label class="form-check-label">開</label>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="mb-3">
+                            <legend>testing data switch</legend>
+                            <div class="form-check form-switch form-switch_custom fw-bold">
+                                <label class="form-check-label">關</label>
+                                <input class="form-switch-input ms-1 me-1 h5 mt-2" type="checkbox" id="DebugMode">
+                                <label class="form-check-label">開</label>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="pickrModal" data-bs-backdrop="false" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border-0">
+                    <div class="color-picker-container"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="inputModal" data-bs-backdrop="true" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">新增目標</h5>
+                        <i class="fs-3 bi bi-x-lg" data-bs-dismiss="modal" aria-label="Close" data-action="close"></i>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="input-group-itemInside m-1">
+                                <input type="text" class="form-control valid-icon-left" name="input-name" placeholder="輸入名稱" required />
+                                <div class="color-picker-btn border border-dark"></div>
+                            </div>
+                            <input type="number" class="form-control m-1" name="input-target-money" min="0" oninput="validity.valid||(value='');" placeholder="輸入目標金額" required />
+                        </form>
+                        <input type="number" class="form-control m-1" name="input-bonus-money" min="0" oninput="validity.valid||(value='');" placeholder="輸入額外金額(非必填)" />
+                        <div class="form-check m-1">
+                            <input class="form-check-input" type="checkbox" value="1" id="chk-set-total-target">
+                            <label class="form-check-label" for="chk-set-total-target" id="label-set-total-target">設為本月總目標</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-action="copy">複製上個月目標</button>
+                        <button type="button" class="btn btn-primary" data-action="insert-next">新增多筆</button>
+                        <button type="button" class="btn btn-primary" data-action="insert">新增</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="goalDetailModal" data-bs-backdrop="true" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title item-long-word mw-80">
+                            <span class="modal-title-span">目標細項</span>
+                            <span class="modal-title-input d-none" contenteditable>目標細項</span>
+                        </h5>
+                        <i class="bi bi-pencil-square ms-1 btn-icon" data-action="rename"></i>
+                        <i class="bi bi-check-square ms-1 btn-icon d-none" data-action="rename-confirm"></i>
+                        <i class="fs-3 bi bi-x-lg" data-bs-dismiss="modal" aria-label="Close"></i>
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-action="accountingList">記帳細項</button>
+                        <button type="button" class="btn btn-primary" data-action="accounting">記帳</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="accountingDetailModal" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-fullscreen modal-dialog modal-dialog-centered h-100vh w-100vw">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title item-long-word">
+                            <span class="modal-title-span">總覽</span>
+                        </h5>
+                        <i class="fs-3 bi bi-x-lg" data-bs-dismiss="modal" aria-label="Close"></i>
+                    </div>
+                    <div class="modal-body">
+                        <div class="content"></div>
+                        <button class="circle-button open-accountingModal bg-dark-gray"><i class="fs-3 bi bi-plus-lg"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="accountingModal" data-bs-backdrop="true" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-fullscreen modal-dialog modal-dialog-centered h-100vh w-100vw">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">記帳</h5>
+                        <i class="fs-3 bi bi-x-lg" data-bs-dismiss="modal" aria-label="Close"></i>
+                    </div>
+                    <div class="modal-body">
+                        <select class="form-select goal-options mb-1" name="goal-options">
+                            <option selected>請先輸入目標</option>
+                        </select>
+                        <form>
+                            <input type="date" class="form-control mb-1" name="input-date" placeholder="輸入日期" required />
+                            <input type="text" class="form-control mb-1" name="input-name" placeholder="輸入記帳名稱" required />
+                            <input type="number" class="form-control mb-1" name="input-target-money" min="0" oninput="validity.valid||(value='');" placeholder="輸入花費目標金額" required />
+                        </form>
+                        <input type="number" class="form-control mb-1" name="input-bonus-money" min="0" oninput="validity.valid||(value='');" placeholder="輸入花費額外金額(非必填)" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger modify d-none" data-action="delete">刪除</button>
+                        <button type="button" class="btn btn-primary modify d-none" data-action="update">修改</button>
+                        <button type="button" class="btn btn-primary create" data-action="insert-next">新增多筆</button>
+                        <button type="button" class="btn btn-primary create" data-action="insert">新增</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
