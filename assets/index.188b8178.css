@@ -28,6 +28,10 @@ body {
     background-color: #005CFF;
 }
 
+.h-82vh {
+    height: 82vh !important;
+}
+
 #app-loading {
     position: fixed; /* 固定在螢幕上 */
     top: 50%; /* 垂直中間 */

@@ -576,7 +576,7 @@ registerPlugin("CapacitorHttp", {
   web: () => new CapacitorHttpPluginWeb()
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web.f36fa3b1.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web.012d95f2.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
 });
 async function storage_setItem(key, value) {
   await Preferences.set({
@@ -3191,10 +3191,10 @@ var Encoding;
   Encoding2["UTF16"] = "utf16";
 })(Encoding || (Encoding = {}));
 registerPlugin("Filesystem", {
-  web: () => __vitePreload(() => import("./web.1127c846.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
+  web: () => __vitePreload(() => import("./web.6afe5830.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
 });
 const App = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web.d58e1a27.js"), true ? [] : void 0).then((m) => new m.AppWeb())
+  web: () => __vitePreload(() => import("./web.661ab1b5.js"), true ? [] : void 0).then((m) => new m.AppWeb())
 });
 var defaultSetting = {
   "custom": {
@@ -3204,6 +3204,7 @@ var defaultSetting = {
       "danger": 90
     }
   },
+  "HomeLocation": "home",
   "Mode": "t-mode",
   "CurrentDateKey": "",
   "NewItemPosition": "top",
@@ -6178,10 +6179,12 @@ function renderGoalDetailModal(targetName, data) {
 }
 function renderUserSettingContent(userSetting) {
   const SettingContent = document.querySelector("#setting-content");
+  const HomeLocation = SettingContent.querySelector("#HomeLocation");
   const Mode = SettingContent.querySelector("#Mode");
   const ShowType = SettingContent.querySelector("#ShowType");
   const NewItemPosition = SettingContent.querySelector("#NewItemPosition");
   const DebugMode = SettingContent.querySelector("#DebugMode");
+  HomeLocation.checked = userSetting.HomeLocation == "home" ? true : false;
   Mode.checked = userSetting.Mode == "t-mode" ? true : false;
   ShowType.checked = userSetting.ShowType == "number" ? true : false;
   NewItemPosition.checked = userSetting.NewItemPosition == "top" ? true : false;
@@ -6808,6 +6811,7 @@ async function initEventListener() {
   Data$1 = await initData();
   DataValue$1 = await Data$1.get();
   const Nav = document.querySelector("nav");
+  const MenuCircleBtn = document.querySelector(".menu-circle-button");
   const SlideMenu = document.querySelector("#slideMenu");
   const NavButton = document.querySelector(".nav-button");
   const InputModal = document.querySelector("#inputModal");
@@ -6870,7 +6874,7 @@ async function initEventListener() {
     }
   });
   Nav.addEventListener("click", async (e) => {
-    var _a, _b;
+    var _a;
     const target = e.target;
     const selectedNavLink = target.closest(".nav-link");
     const navLinks = Nav.querySelectorAll(".nav-link");
@@ -6878,9 +6882,9 @@ async function initEventListener() {
       return;
     if (((_a = selectedNavLink.dataset) == null ? void 0 : _a.bsToggle) == "modal")
       return;
+    const tabTarget = selectedNavLink.dataset.tabTarget;
     const lastActiveLnk = Nav.querySelector(".nav-link.active");
     navLinks.forEach((navLink) => {
-      const tabTarget = selectedNavLink.dataset.tabTarget;
       const tabPanes = document.querySelectorAll(".tab-pane");
       tabPanes.forEach((tabPane) => {
         tabPane.classList.remove("show", "active");
@@ -6890,12 +6894,30 @@ async function initEventListener() {
       navLink.classList.remove("active");
       selectedNavLink.classList.add("active");
     });
-    if (((_b = selectedNavLink.dataset) == null ? void 0 : _b.tabTarget) == "#export") {
+    Nav.dataset.active = tabTarget;
+    if (tabTarget == "#home" || tabTarget == "#accountingDetail")
+      MenuCircleBtn.classList.remove("d-none");
+    else
+      MenuCircleBtn.classList.add("d-none");
+    if (tabTarget == "#export") {
       await showAlert({
         title: "todo",
         icon: "error"
       });
       lastActiveLnk.click();
+    }
+  });
+  MenuCircleBtn.addEventListener("click", (e) => {
+    const activeTab = Nav.dataset.active;
+    if (activeTab == "#home")
+      switchBsModalDisplay(InputModal_bs);
+    if (activeTab == "#accountingDetail")
+      switchBsModalDisplay(AccountingModal_bs);
+    function switchBsModalDisplay(bsModal) {
+      if (bsModal._isShown)
+        bsModal.hide();
+      else
+        bsModal.show();
     }
   });
   Pickr2 = new ColorPickr({
@@ -7486,6 +7508,9 @@ async function initEventListener() {
   SettingContent.addEventListener("change", async (e) => {
     const target = e.target;
     switch (target.id) {
+      case "HomeLocation":
+        UserSettingValue$1.HomeLocation = target.checked ? "home" : "accountingDetail";
+        break;
       case "Mode":
         UserSettingValue$1.Mode = target.checked ? "t-mode" : "it-mode";
         break;
@@ -7643,11 +7668,17 @@ window.addEventListener("load", async () => {
   DataValue = await Data.get();
   await initDataContent(DataValue, UserSettingValue);
   await initEventListener();
+  LocateHomePage();
   setTimeout(() => {
     document.querySelector("#app-loading").classList.add("d-none");
     document.querySelector("#app").classList.remove("d-none");
   }, 1e3);
 });
+function LocateHomePage() {
+  if (UserSettingValue.HomeLocation == "accountingDetail") {
+    document.querySelector("nav .nav-link[data-tab-target='#accountingDetail']").click();
+  }
+}
 var style = "";
 var custom = "";
 export { Encoding as E, WebPlugin as W, buildRequestInit as b };
