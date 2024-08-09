@@ -8,6 +8,10 @@
     font-display: swap;
 }
 
+html, body {
+    overflow: hidden;
+    overscroll-behavior: contain; /* 或使用 `overflow: auto` */
+}
 
 /* 禁止拖曳選文字 */
 body {
@@ -15,7 +19,6 @@ body {
     -webkit-user-select: none; /* Chrome, Safari, Opera */
     -moz-user-select: none;    /* Firefox */
     -ms-user-select: none;     /* IE 10+ */
-    overflow-x: hidden;
     font-family: '台北黑體', sans-serif;
     font-weight: 700 !important;
     overflow: hidden;
@@ -23,6 +26,27 @@ body {
 
 .bg-blue {
     background-color: #005CFF;
+}
+
+#app-loading {
+    position: fixed; /* 固定在螢幕上 */
+    top: 50%; /* 垂直中間 */
+    left: 50%; /* 水平中間 */
+    transform: translate(-50%, -50%); /* 使元素居中 */
+    display: flex; /* 使內容水平和垂直居中 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+#app-loading svg {
+    display: block; /* 確保 SVG 顯示為區塊 */
+}
+#app-loading span {
+    position: absolute; /* 使文本絕對定位於 SVG 之上 */
+    top: 50%; /* 垂直中間 */
+    left: 50%; /* 水平中間 */
+    transform: translate(-50%, -50%); /* 使文本在 SVG 正中間 */
+    color: #000; /* 設定文本顏色，根據需要進行調整 */
+    font-weight: bold; /* 設定文本粗細 */
 }
 
 /* 下方 nav 選單 */

@@ -576,7 +576,7 @@ registerPlugin("CapacitorHttp", {
   web: () => new CapacitorHttpPluginWeb()
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web.26a9dded.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web.0928b281.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
 });
 async function storage_setItem(key, value) {
   await Preferences.set({
@@ -3191,10 +3191,10 @@ var Encoding;
   Encoding2["UTF16"] = "utf16";
 })(Encoding || (Encoding = {}));
 registerPlugin("Filesystem", {
-  web: () => __vitePreload(() => import("./web.b69c9e1b.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
+  web: () => __vitePreload(() => import("./web.067096f8.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
 });
 const App = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web.73e658c8.js"), true ? [] : void 0).then((m) => new m.AppWeb())
+  web: () => __vitePreload(() => import("./web.fd7562b1.js"), true ? [] : void 0).then((m) => new m.AppWeb())
 });
 var defaultSetting = {
   "custom": {
@@ -7657,6 +7657,10 @@ window.addEventListener("load", async () => {
   LoadingMsgBox.close();
   await initDataContent(DataValue, UserSettingValue);
   await initEventListener();
+  setTimeout(() => {
+    document.querySelector("#app-loading").classList.add("d-none");
+    document.querySelector("#app").classList.remove("d-none");
+  }, 1e3);
 });
 var style = "";
 var custom = "";
