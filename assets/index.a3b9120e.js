@@ -576,7 +576,7 @@ registerPlugin("CapacitorHttp", {
   web: () => new CapacitorHttpPluginWeb()
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web.012d95f2.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web.3940eabd.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
 });
 async function storage_setItem(key, value) {
   await Preferences.set({
@@ -3191,10 +3191,10 @@ var Encoding;
   Encoding2["UTF16"] = "utf16";
 })(Encoding || (Encoding = {}));
 registerPlugin("Filesystem", {
-  web: () => __vitePreload(() => import("./web.6afe5830.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
+  web: () => __vitePreload(() => import("./web.213c11ca.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
 });
 const App = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web.661ab1b5.js"), true ? [] : void 0).then((m) => new m.AppWeb())
+  web: () => __vitePreload(() => import("./web.c708864f.js"), true ? [] : void 0).then((m) => new m.AppWeb())
 });
 var defaultSetting = {
   "custom": {
@@ -3228,7 +3228,7 @@ async function initUserSetting() {
 }
 var demo_Data = {
   "2024/06": {
-    "currentId": 7,
+    "currentId": 9,
     "totalGoal": {
       "name": "\u672C\u6708\u6709\u8A2D\u5B9A\u7E3D\u984D",
       "goal": {
@@ -3240,130 +3240,147 @@ var demo_Data = {
         "bonus": 30
       }
     },
-    "items": [
-      {
-        "name": "\u6E2C\u8A66\u76EE\u6A191",
-        "goal": {
-          "amount": 500,
-          "bonus": 0
-        },
+    "items": {
+      "unset": {
+        "name": "\u5176\u4ED6\u82B1\u8CBB",
         "current": {
-          "amount": 700,
-          "bonus": 10
-        },
-        "accounting": [{
-          "id": 0,
-          "name": "\u6E2C\u8A66\u8A18\u5E331-1",
-          "amount": 100,
-          "bonus": 0,
-          "date": "2024/07/22",
-          "created_at": "2024/07/22 00:00:00"
-        }, {
-          "id": 1,
-          "name": "\u6E2C\u8A66\u8A18\u5E331-2",
-          "amount": 500,
-          "bonus": 10,
-          "date": "2024/07/22",
-          "created_at": "2024/07/22 01:00:00"
-        }, {
-          "id": 2,
-          "name": "\u6E2C\u8A66\u8A18\u5E331-3",
-          "amount": 100,
-          "bonus": 0,
-          "date": "2024/07/10",
-          "created_at": "2024/07/22 02:00:00"
-        }],
-        "color": "#FFDC35",
-        "created_at": "2024/07/19 00:00:00"
-      },
-      {
-        "name": "\u6E2C\u8A66\u76EE\u6A192",
-        "goal": {
-          "amount": 500,
-          "bonus": 500
-        },
-        "current": {
-          "amount": 800,
-          "bonus": 10
-        },
-        "accounting": [{
-          "id": 3,
-          "name": "\u6E2C\u8A66\u8A18\u5E332-1",
-          "amount": 650,
-          "bonus": 5,
-          "date": "2024/07/24",
-          "created_at": "2024/07/24 00:00:00"
-        }, {
-          "id": 4,
-          "name": "\u6E2C\u8A66\u8A18\u5E332-2",
-          "amount": 150,
-          "bonus": 5,
-          "date": "2024/07/25",
-          "created_at": "2024/07/24 01:00:00"
-        }],
-        "color": "#FFBD9D",
-        "created_at": "2024/07/23 00:00:00"
-      },
-      {
-        "name": "\u6E2C\u8A66\u76EE\u6A193",
-        "goal": {
-          "amount": 500,
-          "bonus": 500
-        },
-        "current": {
-          "amount": 900,
-          "bonus": 10
-        },
-        "accounting": [{
-          "id": 5,
-          "name": "\u6E2C\u8A66\u8A18\u5E333-1",
-          "amount": 900,
-          "bonus": 10,
-          "date": "2024/07/22",
-          "created_at": "2024/07/23 00:00:00"
-        }],
-        "color": "#FFFFAA",
-        "created_at": "2024/07/21 01:00:00"
-      },
-      {
-        "name": "\u6E2C\u8A66\u76EE\u6A194",
-        "goal": {
-          "amount": 2e3,
+          "amount": 400,
           "bonus": 100
         },
-        "current": {
-          "amount": 1e3,
-          "bonus": 0
-        },
         "accounting": [{
-          "id": 6,
-          "name": "\u6E2C\u8A66\u8A18\u5E334-1",
-          "amount": 500,
-          "bonus": 0,
-          "date": "2024/07/20",
-          "created_at": "2024/07/23 00:00:00"
+          "id": 8,
+          "name": "\u5176\u4ED6\u82B1\u8CBB1",
+          "amount": 300,
+          "bonus": 100,
+          "date": "2024/07/19",
+          "created_at": "2024/07/22 00:00:00",
+          "unset": true
         }, {
-          "id": 7,
-          "name": "\u6E2C\u8A66\u8A18\u5E334-2",
-          "amount": 500,
+          "id": 9,
+          "name": "\u5176\u4ED6\u82B1\u8CBB2",
+          "amount": 100,
           "bonus": 0,
-          "date": "2024/07/10",
-          "created_at": "2024/07/23 00:00:00"
+          "date": "2024/07/22",
+          "created_at": "2024/07/22 00:00:00",
+          "unset": true
         }],
-        "color": "#A8FF24",
-        "created_at": "2024/07/23 00:10:00"
+        "unset": true
       },
-      {
-        "name": "\u5176\u4ED6\u82B1\u8CBB",
-        "unset": true,
-        "current": {
-          "amount": 0,
-          "bonus": 0
+      "normal": [
+        {
+          "name": "\u6E2C\u8A66\u76EE\u6A191",
+          "goal": {
+            "amount": 500,
+            "bonus": 0
+          },
+          "current": {
+            "amount": 700,
+            "bonus": 10
+          },
+          "accounting": [{
+            "id": 0,
+            "name": "\u6E2C\u8A66\u8A18\u5E331-1",
+            "amount": 100,
+            "bonus": 0,
+            "date": "2024/07/22",
+            "created_at": "2024/07/22 00:00:00"
+          }, {
+            "id": 1,
+            "name": "\u6E2C\u8A66\u8A18\u5E331-2",
+            "amount": 500,
+            "bonus": 10,
+            "date": "2024/07/22",
+            "created_at": "2024/07/22 01:00:00"
+          }, {
+            "id": 2,
+            "name": "\u6E2C\u8A66\u8A18\u5E331-3",
+            "amount": 100,
+            "bonus": 0,
+            "date": "2024/07/10",
+            "created_at": "2024/07/22 02:00:00"
+          }],
+          "color": "#FFDC35",
+          "created_at": "2024/07/19 00:00:00"
         },
-        "accounting": [],
-        "created_at": "2024/07/23 00:00:00"
-      }
-    ]
+        {
+          "name": "\u6E2C\u8A66\u76EE\u6A192",
+          "goal": {
+            "amount": 500,
+            "bonus": 500
+          },
+          "current": {
+            "amount": 800,
+            "bonus": 10
+          },
+          "accounting": [{
+            "id": 3,
+            "name": "\u6E2C\u8A66\u8A18\u5E332-1",
+            "amount": 650,
+            "bonus": 5,
+            "date": "2024/07/24",
+            "created_at": "2024/07/24 00:00:00"
+          }, {
+            "id": 4,
+            "name": "\u6E2C\u8A66\u8A18\u5E332-2",
+            "amount": 150,
+            "bonus": 5,
+            "date": "2024/07/25",
+            "created_at": "2024/07/24 01:00:00"
+          }],
+          "color": "#FFBD9D",
+          "created_at": "2024/07/23 00:00:00"
+        },
+        {
+          "name": "\u6E2C\u8A66\u76EE\u6A193",
+          "goal": {
+            "amount": 500,
+            "bonus": 500
+          },
+          "current": {
+            "amount": 900,
+            "bonus": 10
+          },
+          "accounting": [{
+            "id": 5,
+            "name": "\u6E2C\u8A66\u8A18\u5E333-1",
+            "amount": 900,
+            "bonus": 10,
+            "date": "2024/07/22",
+            "created_at": "2024/07/23 00:00:00"
+          }],
+          "color": "#FFFFAA",
+          "created_at": "2024/07/21 01:00:00"
+        },
+        {
+          "name": "\u6E2C\u8A66\u76EE\u6A194",
+          "goal": {
+            "amount": 2e3,
+            "bonus": 100
+          },
+          "current": {
+            "amount": 1e3,
+            "bonus": 0
+          },
+          "accounting": [{
+            "id": 6,
+            "name": "\u6E2C\u8A66\u8A18\u5E334-1",
+            "amount": 500,
+            "bonus": 0,
+            "date": "2024/07/20",
+            "created_at": "2024/07/23 00:00:00"
+          }, {
+            "id": 7,
+            "name": "\u6E2C\u8A66\u8A18\u5E334-2",
+            "amount": 500,
+            "bonus": 0,
+            "date": "2024/07/10",
+            "created_at": "2024/07/23 00:00:00"
+          }],
+          "color": "#A8FF24",
+          "created_at": "2024/07/23 00:10:00"
+        }
+      ]
+    }
   },
   "2024/07": {
     "currentId": 0,
@@ -3373,186 +3390,187 @@ var demo_Data = {
         "bonus": 50020
       }
     },
-    "items": [
-      {
-        "name": "\u540D\u5B57\u8D85\u9577\u7684\u6E2C\u8A666666666666666666666666666666666\u540D\u5B57\u8D85\u9577\u7684\u6E2C\u8A66GOGOGOGOGGGGGGGGGGGGGGGGGGGGGGGGGG",
-        "goal": {
-          "amount": 9250,
-          "bonus": 0
-        },
-        "current": {
-          "amount": 9250,
-          "bonus": 0
-        },
-        "accounting": [],
-        "color": "#A8FF24",
-        "created_at": "2024/07/23 00:00:00"
-      },
-      {
-        "name": "\u79DF\u91D1",
-        "goal": {
-          "amount": 9250,
-          "bonus": 0
-        },
-        "current": {
-          "amount": 9250,
-          "bonus": 0
-        },
-        "accounting": [],
-        "color": "#84C1FF",
-        "created_at": "2024/07/23 01:00:00"
-      },
-      {
-        "name": "\u96FB\u4FE1",
-        "goal": {
-          "amount": 799,
-          "bonus": 0
-        },
-        "current": {
-          "amount": 799,
-          "bonus": 0
-        },
-        "accounting": [],
-        "color": "#7AFEC6",
-        "created_at": "2024/07/23 00:10:00"
-      },
-      {
-        "name": "\u6C34\u96FB",
-        "goal": {
-          "amount": 200,
-          "bonus": 100
-        },
-        "current": {
-          "amount": 0,
-          "bonus": 20
-        },
-        "accounting": [],
-        "color": "#A23400",
-        "created_at": "2024/07/23 02:00:00"
-      },
-      {
-        "name": "\u7DB2\u8DEF",
-        "goal": {
-          "amount": 200,
-          "bonus": 100
-        },
-        "current": {
-          "amount": 500,
-          "bonus": 0
-        },
-        "accounting": [],
-        "color": "#D9B3B3",
-        "created_at": "2024/07/23 01:00:00"
-      },
-      {
-        "name": "\u5B78\u8CB8",
-        "goal": {
-          "amount": 0,
-          "bonus": 0
-        },
-        "current": {
-          "amount": 100,
-          "bonus": 0
-        },
-        "accounting": [],
-        "color": "#A3D1D1",
-        "created_at": "2024/07/23 00:00:11"
-      },
-      {
-        "name": "\u9910\u8CBB",
-        "goal": {
-          "amount": 7500,
-          "bonus": 2500
-        },
-        "current": {
-          "amount": 1e3,
-          "bonus": 5e4
-        },
-        "accounting": [],
-        "color": "#B766AD",
-        "created_at": "2024/07/23 02:00:00"
-      },
-      {
-        "name": "\u5132\u84C4\u96AA",
-        "goal": {
-          "amount": 0,
-          "bonus": 0
-        },
-        "current": {
-          "amount": 0,
-          "bonus": 0
-        },
-        "accounting": [],
-        "color": "#0066CC",
-        "created_at": "2024/07/23 03:00:00"
-      },
-      {
-        "name": "\u5A1B\u6A02",
-        "goal": {
-          "amount": 4e3,
-          "bonus": 0
-        },
-        "current": {
-          "amount": 4e3,
-          "bonus": 0
-        },
-        "accounting": [],
-        "color": "#F1E1FF",
-        "created_at": "2024/07/23 00:00:00"
-      },
-      {
-        "name": "\u4FDD\u96AA",
-        "goal": {
-          "amount": 1016,
-          "bonus": 0
-        },
-        "current": {
-          "amount": 1016,
-          "bonus": 0
-        },
-        "accounting": [],
-        "color": "#930093",
-        "created_at": "2024/07/23 00:00:00"
-      },
-      {
-        "name": "\u9810\u5099\u91D1/\u5132\u84C4",
-        "goal": {
-          "amount": 4e3,
-          "bonus": 0
-        },
-        "current": {
-          "amount": 4e3,
-          "bonus": 0
-        },
-        "accounting": [],
-        "color": "#FF0000",
-        "created_at": "2024/07/23 00:00:01"
-      },
-      {
-        "name": "\u5B5D\u89AA\u8CBB",
-        "goal": {
-          "amount": 2e3,
-          "bonus": 0
-        },
-        "current": {
-          "amount": 2e3,
-          "bonus": 0
-        },
-        "accounting": [],
-        "color": "#5B5B5B",
-        "created_at": "2024/07/23 00:00:01"
-      },
-      {
-        "name": "\u5176\u4ED6\u82B1\u8CBB\u6539\u540D\u5B57",
-        "unset": true,
+    "items": {
+      "unset": {
+        "name": "\u5176\u4ED6\u82B1\u8CBB",
         "current": {
           "amount": 9999,
           "bonus": 0
         },
         "accounting": [],
-        "created_at": "2024/07/23 00:00:00"
-      }
-    ]
+        "unset": true
+      },
+      "normal": [
+        {
+          "name": "\u540D\u5B57\u8D85\u9577\u7684\u6E2C\u8A666666666666666666666666666666666\u540D\u5B57\u8D85\u9577\u7684\u6E2C\u8A66GOGOGOGOGGGGGGGGGGGGGGGGGGGGGGGGGG",
+          "goal": {
+            "amount": 9250,
+            "bonus": 0
+          },
+          "current": {
+            "amount": 9250,
+            "bonus": 0
+          },
+          "accounting": [],
+          "color": "#A8FF24",
+          "created_at": "2024/07/23 00:00:00"
+        },
+        {
+          "name": "\u79DF\u91D1",
+          "goal": {
+            "amount": 9250,
+            "bonus": 0
+          },
+          "current": {
+            "amount": 9250,
+            "bonus": 0
+          },
+          "accounting": [],
+          "color": "#84C1FF",
+          "created_at": "2024/07/23 01:00:00"
+        },
+        {
+          "name": "\u96FB\u4FE1",
+          "goal": {
+            "amount": 799,
+            "bonus": 0
+          },
+          "current": {
+            "amount": 799,
+            "bonus": 0
+          },
+          "accounting": [],
+          "color": "#7AFEC6",
+          "created_at": "2024/07/23 00:10:00"
+        },
+        {
+          "name": "\u6C34\u96FB",
+          "goal": {
+            "amount": 200,
+            "bonus": 100
+          },
+          "current": {
+            "amount": 0,
+            "bonus": 20
+          },
+          "accounting": [],
+          "color": "#A23400",
+          "created_at": "2024/07/23 02:00:00"
+        },
+        {
+          "name": "\u7DB2\u8DEF",
+          "goal": {
+            "amount": 200,
+            "bonus": 100
+          },
+          "current": {
+            "amount": 500,
+            "bonus": 0
+          },
+          "accounting": [],
+          "color": "#D9B3B3",
+          "created_at": "2024/07/23 01:00:00"
+        },
+        {
+          "name": "\u5B78\u8CB8",
+          "goal": {
+            "amount": 0,
+            "bonus": 0
+          },
+          "current": {
+            "amount": 100,
+            "bonus": 0
+          },
+          "accounting": [],
+          "color": "#A3D1D1",
+          "created_at": "2024/07/23 00:00:11"
+        },
+        {
+          "name": "\u9910\u8CBB",
+          "goal": {
+            "amount": 7500,
+            "bonus": 2500
+          },
+          "current": {
+            "amount": 1e3,
+            "bonus": 5e4
+          },
+          "accounting": [],
+          "color": "#B766AD",
+          "created_at": "2024/07/23 02:00:00"
+        },
+        {
+          "name": "\u5132\u84C4\u96AA",
+          "goal": {
+            "amount": 0,
+            "bonus": 0
+          },
+          "current": {
+            "amount": 0,
+            "bonus": 0
+          },
+          "accounting": [],
+          "color": "#0066CC",
+          "created_at": "2024/07/23 03:00:00"
+        },
+        {
+          "name": "\u5A1B\u6A02",
+          "goal": {
+            "amount": 4e3,
+            "bonus": 0
+          },
+          "current": {
+            "amount": 4e3,
+            "bonus": 0
+          },
+          "accounting": [],
+          "color": "#F1E1FF",
+          "created_at": "2024/07/23 00:00:00"
+        },
+        {
+          "name": "\u4FDD\u96AA",
+          "goal": {
+            "amount": 1016,
+            "bonus": 0
+          },
+          "current": {
+            "amount": 1016,
+            "bonus": 0
+          },
+          "accounting": [],
+          "color": "#930093",
+          "created_at": "2024/07/23 00:00:00"
+        },
+        {
+          "name": "\u9810\u5099\u91D1/\u5132\u84C4",
+          "goal": {
+            "amount": 4e3,
+            "bonus": 0
+          },
+          "current": {
+            "amount": 4e3,
+            "bonus": 0
+          },
+          "accounting": [],
+          "color": "#FF0000",
+          "created_at": "2024/07/23 00:00:01"
+        },
+        {
+          "name": "\u5B5D\u89AA\u8CBB",
+          "goal": {
+            "amount": 2e3,
+            "bonus": 0
+          },
+          "current": {
+            "amount": 2e3,
+            "bonus": 0
+          },
+          "accounting": [],
+          "color": "#5B5B5B",
+          "created_at": "2024/07/23 00:00:01"
+        }
+      ]
+    }
   }
 };
 function number2percent(number) {
@@ -3623,24 +3641,25 @@ function getDefault() {
   let formattedDate = `${year}/${month}`;
   return {
     [formattedDate]: {
+      currentId: 0,
       totalGoal: {
         current: {
           amount: 0,
           bonus: 0
         }
       },
-      items: [{
-        currentId: 0,
-        name: "\u5176\u4ED6\u82B1\u8CBB",
-        unset: true,
-        current: {
-          amount: 0,
-          bonus: 0
+      items: {
+        unset: {
+          name: "\u5176\u4ED6\u82B1\u8CBB",
+          current: {
+            amount: 0,
+            bonus: 0
+          },
+          accounting: [],
+          unset: true
         },
-        accounting: [],
-        color: "red",
-        created_at: getCurrentFormattedDateTime()
-      }]
+        normal: []
+      }
     }
   };
 }
@@ -4009,7 +4028,7 @@ function lastChild(el, selector) {
   }
   return last || null;
 }
-function index(el, selector) {
+function index$1(el, selector) {
   var index2 = 0;
   if (!el || !el.parentNode) {
     return -1;
@@ -4635,8 +4654,8 @@ Sortable.prototype = {
     if (lastDownEl === target) {
       return;
     }
-    oldIndex = index(target);
-    oldDraggableIndex = index(target, options.draggable);
+    oldIndex = index$1(target);
+    oldDraggableIndex = index$1(target, options.draggable);
     if (typeof filter === "function") {
       if (filter.call(this, evt, target, this)) {
         _dispatchEvent({
@@ -5059,8 +5078,8 @@ Sortable.prototype = {
       return completedFired = true;
     }
     function changed() {
-      newIndex = index(dragEl);
-      newDraggableIndex = index(dragEl, options.draggable);
+      newIndex = index$1(dragEl);
+      newDraggableIndex = index$1(dragEl, options.draggable);
       _dispatchEvent({
         sortable: _this,
         name: "change",
@@ -5148,7 +5167,7 @@ Sortable.prototype = {
         direction = _getSwapDirection(evt, target, targetRect, vertical, differentRowCol ? 1 : options.swapThreshold, options.invertedSwapThreshold == null ? options.swapThreshold : options.invertedSwapThreshold, isCircumstantialInvert, lastTarget === target);
         var sibling;
         if (direction !== 0) {
-          var dragIndex = index(dragEl);
+          var dragIndex = index$1(dragEl);
           do {
             dragIndex -= direction;
             sibling = parentEl.children[dragIndex];
@@ -5210,14 +5229,14 @@ Sortable.prototype = {
   },
   _onDrop: function _onDrop(evt) {
     var el = this.el, options = this.options;
-    newIndex = index(dragEl);
-    newDraggableIndex = index(dragEl, options.draggable);
+    newIndex = index$1(dragEl);
+    newDraggableIndex = index$1(dragEl, options.draggable);
     pluginEvent2("drop", this, {
       evt
     });
     parentEl = dragEl && dragEl.parentNode;
-    newIndex = index(dragEl);
-    newDraggableIndex = index(dragEl, options.draggable);
+    newIndex = index$1(dragEl);
+    newDraggableIndex = index$1(dragEl, options.draggable);
     if (Sortable.eventCanceled) {
       this._nulling();
       return;
@@ -5540,7 +5559,7 @@ function _getSwapDirection(evt, target, targetRect, vertical, swapThreshold, inv
   return 0;
 }
 function _getInsertDirection(target) {
-  if (index(dragEl) < index(target)) {
+  if (index$1(dragEl) < index$1(target)) {
     return 1;
   } else {
     return -1;
@@ -5588,7 +5607,7 @@ Sortable.utils = {
   closest,
   toggleClass,
   clone,
-  index,
+  index: index$1,
   nextTick: _nextTick,
   cancelNextTick: _cancelNextTick,
   detectDirection: _detectDirection,
@@ -5851,7 +5870,7 @@ async function initDataContent(DataValue2, UserSettingValue2) {
   renderUserSettingContent(UserSettingValue2);
 }
 function renderDataContent(data, { CurrentDateKey, ...param }) {
-  const Home_content = document.querySelector("#home-content");
+  const HomeContent = document.querySelector("#home-content");
   const mode = (param == null ? void 0 : param.Mode) ? param.Mode : "t-mode";
   const showType = (param == null ? void 0 : param.ShowType) ? param.ShowType : "number";
   let d;
@@ -5863,39 +5882,39 @@ function renderDataContent(data, { CurrentDateKey, ...param }) {
     d = data[CurrentDateKey];
   }
   let html = renderItemsHTML(d, mode);
-  Home_content.innerHTML = html;
+  HomeContent.innerHTML = html;
   const d_noneClassName = showType == "number" ? "percent" : "number";
-  Home_content.querySelectorAll(".progress-item").forEach((progress_item) => {
+  HomeContent.querySelectorAll(".progress-item").forEach((progress_item) => {
     progress_item.querySelectorAll(`span.${showType}`).forEach((item) => {
       item.classList.remove("d-none");
     });
   });
-  Home_content.querySelectorAll(".progress-item").forEach((progress_item) => {
+  HomeContent.querySelectorAll(".progress-item").forEach((progress_item) => {
     progress_item.querySelectorAll(`span.${d_noneClassName}`).forEach((item) => {
       item.classList.add("d-none");
     });
   });
-  renderSortable(Home_content);
+  renderSortable(HomeContent);
   document.querySelector("#item-main-nav").classList.add("d-none");
   debugMode(param == null ? void 0 : param.DebugMode);
 }
 function renderItemsHTML(data, mode) {
-  let items = data.items;
+  let items = data.items.normal;
   let html = "";
   let html_option = "";
-  if (items.length == 0) {
-    html = "<div class='text-center h4'>\u672C\u6708\u5C1A\u7121\u76EE\u6A19\uFF0C\u8ACB\u5148\u65B0\u589E</div>";
-  }
   for (let item of items) {
     html += renderBarHTML(item, {
       mode
     });
     html_option += renderAccountingOptionHTML(item.name);
   }
+  html_option += renderAccountingOptionHTML(data.items.unset.name, true);
   document.querySelector(".goal-options").innerHTML = html_option;
   let total_html = renderBarHTML(data.totalGoal, {
     mode
   }, true);
+  if (items.length == 0)
+    ;
   return total_html + html;
 }
 function renderBarHTML(item, param, isGoal) {
@@ -5906,14 +5925,12 @@ function renderBarHTML(item, param, isGoal) {
   const current = item == null ? void 0 : item.current;
   const backgroundColor = item.color;
   let progressHTML = "";
-  if ((item == null ? void 0 : item.unset) === true || isGoal == true && !item.goal) {
-    if (current.amount == 0)
-      return "";
+  if (isGoal == true) {
     if (mode == "i-mode" && param.imode == "bonus")
       return "";
     progressHTML = `
             <div class="d-flex justify-content-end">
-                <span class="progress-item">
+                <span class="progress-item mb-1">
                     <span class="percent d-none" style="color: white;">${convert2ThousandsSeparator(current.amount)}</span>
                     <span class="number" style="color: white;">$${convert2ThousandsSeparator(current.amount)}</span>
                 </span>
@@ -5936,7 +5953,7 @@ function renderBarHTML(item, param, isGoal) {
       goalNumber = total;
       progressHTML = `
                 <div class="d-flex justify-content-end">
-                    <span class="progress-item">
+                    <span class="progress-item mb-1">
                         <span class="percent d-none" style="color: ${getAmountAlertColor(value[0] + value[1])}">${percent}%</span>
                         <span class="number" style="color: ${getAmountAlertColor(value[0] + value[1])}">$${convert2ThousandsSeparator(currentNumber)}/${convert2ThousandsSeparator(goalNumber)}</span>
                     </span>
@@ -5959,7 +5976,7 @@ function renderBarHTML(item, param, isGoal) {
         bonusNumberText = `<span style="color: ${getAmountAlertColor(value[4])}">(+${convert2ThousandsSeparator(current.bonus)}/${convert2ThousandsSeparator(goal.bonus)})</span>`;
       progressHTML = `
                 <div class="d-flex justify-content-end">
-                    <span class="progress-item">
+                    <span class="progress-item mb-1">
                         <span class="percent d-none">
                             <span style="color: ${getAmountAlertColor(value[3])}">${value[3]}%</span>${bonusPercentText}
                         </span>
@@ -5999,7 +6016,7 @@ function renderBarHTML(item, param, isGoal) {
       let perc = number2percent(value[0] / 100);
       progressHTML = `
                 <div class="d-flex justify-content-end">
-                    <span class="progress-item">
+                    <span class="progress-item mb-1">
                         <span class="percent d-none" style="color: ${getAmountAlertColor(perc)}">[${perc}%]</span>
                         <span class="number" style="color: ${getAmountAlertColor(perc)}">$${convert2ThousandsSeparator(currentNumber)}/${convert2ThousandsSeparator(goalNumber)}</span>
                     </span>
@@ -6045,16 +6062,20 @@ function renderBarHTML(item, param, isGoal) {
   }
 }
 function renderAccountingDetail(items, goal) {
-  const d = goal ? [items.find((item) => item.name == goal)] : items;
+  let d;
+  if (!goal)
+    d = [...items.normal, items.unset];
+  else
+    d = [items.normal.find((item) => item.name == goal)];
   const allAccounting = d.flatMap(
     (item) => item.accounting.map((accountingItem) => ({
       ...accountingItem,
       goalName: item.name,
       color: item.color,
-      unset: item.unset == true ? true : false
+      unset: (item == null ? void 0 : item.unset) == true ? true : false
     }))
   ).sort((b, a) => new Date(a.date) - new Date(b.date));
-  const content = document.querySelector("#accountingDetailModal .content");
+  const AccountingDetailContent = document.querySelector("#accountingDetail-content");
   const groupedByDate = allAccounting.reduce((acc, item) => {
     const date = new Date(item.date).toLocaleDateString("zh-TW", { year: "numeric", month: "numeric", day: "numeric" });
     if (!acc[date]) {
@@ -6104,7 +6125,7 @@ function renderAccountingDetail(items, goal) {
             </div>
         `;
   }
-  content.innerHTML = html;
+  AccountingDetailContent.innerHTML = html;
 }
 function renderCarouselData(keyArray) {
   const CarouselInner = document.querySelector(".carousel-inner");
@@ -6157,8 +6178,8 @@ function renderSortable(element) {
     }
   });
 }
-function renderAccountingOptionHTML(goal) {
-  return `<option value="${goal}">${goal}</option>`;
+function renderAccountingOptionHTML(goal, isUnset = false) {
+  return `<option value="${goal}" ${isUnset ? "data-unset" : ""}>${goal}</option>`;
 }
 function renderGoalDetailModal(targetName, data) {
   const GoalDetailModal = document.querySelector("#goalDetailModal");
@@ -6817,18 +6838,19 @@ async function initEventListener() {
   const InputModal = document.querySelector("#inputModal");
   const GoalDetailModal = document.querySelector("#goalDetailModal");
   const AccountingModal = document.querySelector("#accountingModal");
-  const AccountingDetailModal = document.querySelector("#accountingDetailModal");
   const PickrModal = document.querySelector("#pickrModal");
   new bootstrap.Offcanvas(SlideMenu);
   const InputModal_bs = new bootstrap.Modal(InputModal);
   const GoalDetailModal_bs = new bootstrap.Modal(GoalDetailModal);
   const AccountingModal_bs = new bootstrap.Modal(AccountingModal);
-  const AccountingDetailModal_bs = new bootstrap.Modal(AccountingDetailModal);
   const PickrModal_bs = new bootstrap.Modal(PickrModal);
   const ButtonChangeMode = document.querySelector("#btn-change-mode");
   const ItemMainNav = document.querySelector("#item-main-nav");
   const CarouselData = document.querySelector("#carouselData");
+  document.querySelector("#home");
   const HomeContent = document.querySelector("#home-content");
+  const AccountingDetail = document.querySelector("#accountingDetail");
+  const AccountingDetailContent = document.querySelector("#accountingDetail-content");
   const SettingContent = document.querySelector("#setting-content");
   const OpenAccountingModal = document.querySelectorAll(".open-accountingModal");
   let HomeContentPressTimer;
@@ -6874,37 +6896,50 @@ async function initEventListener() {
     }
   });
   Nav.addEventListener("click", async (e) => {
-    var _a;
     const target = e.target;
     const selectedNavLink = target.closest(".nav-link");
-    const navLinks = Nav.querySelectorAll(".nav-link");
     if (!selectedNavLink)
       return;
-    if (((_a = selectedNavLink.dataset) == null ? void 0 : _a.bsToggle) == "modal")
+    const selectedTabTarget = selectedNavLink.dataset.tabTarget;
+    if (Nav.dataset.active == selectedTabTarget)
       return;
-    const tabTarget = selectedNavLink.dataset.tabTarget;
-    const lastActiveLnk = Nav.querySelector(".nav-link.active");
+    const selectedTab = document.querySelector(selectedTabTarget);
+    const lastActiveLink = Nav.querySelector(".nav-link.active");
+    const lastTab = document.querySelector(lastActiveLink.dataset.tabTarget);
+    const navLinks = Nav.querySelectorAll(".nav-link");
     navLinks.forEach((navLink) => {
-      const tabPanes = document.querySelectorAll(".tab-pane");
-      tabPanes.forEach((tabPane) => {
-        tabPane.classList.remove("show", "active");
-      });
-      let targeTabPane = document.querySelector(tabTarget);
-      targeTabPane.classList.add("show", "active");
       navLink.classList.remove("active");
-      selectedNavLink.classList.add("active");
     });
-    Nav.dataset.active = tabTarget;
-    if (tabTarget == "#home" || tabTarget == "#accountingDetail")
+    selectedNavLink.classList.add("active");
+    let outDirection, inDirection;
+    if (selectedNavLink.dataset.order < lastActiveLink.dataset.order) {
+      outDirection = "right";
+      inDirection = "left";
+    } else {
+      outDirection = "left";
+      inDirection = "right";
+    }
+    lastTab.classList.add(`slide-out-${outDirection}`);
+    selectedTab.classList.add(`slide-in-${inDirection}`);
+    selectedTab.classList.add("active");
+    Nav.dataset.active = selectedTabTarget;
+    setTimeout(() => {
+      lastTab.classList.remove("active", `slide-out-${outDirection}`);
+      selectedTab.classList.remove(`slide-in-${inDirection}`);
+    }, 50);
+    if (selectedTabTarget == "#home" || selectedTabTarget == "#accountingDetail")
       MenuCircleBtn.classList.remove("d-none");
     else
       MenuCircleBtn.classList.add("d-none");
-    if (tabTarget == "#export") {
+    if (selectedTabTarget == "#accountingDetail") {
+      renderAccountingDetail(DataValue$1[UserSettingValue$1.CurrentDateKey]["items"], AccountingDetailPointer);
+    }
+    if (selectedTabTarget == "#export") {
       await showAlert({
         title: "todo",
         icon: "error"
       });
-      lastActiveLnk.click();
+      lastActiveLink.click();
     }
   });
   MenuCircleBtn.addEventListener("click", (e) => {
@@ -7071,9 +7106,9 @@ async function initEventListener() {
               create_at: getCurrentFormattedDateTime()
             };
             if (UserSettingValue$1.NewItemPosition == "top")
-              DataValue$1[UserSettingValue$1.CurrentDateKey]["items"].unshift(newItem);
+              DataValue$1[UserSettingValue$1.CurrentDateKey]["items"]["normal"].unshift(newItem);
             else
-              DataValue$1[UserSettingValue$1.CurrentDateKey]["items"].push(newItem);
+              DataValue$1[UserSettingValue$1.CurrentDateKey]["items"]["normal"].push(newItem);
             await Data$1.set(DataValue$1);
             afterInsert(inputs, target.dataset.action);
           }
@@ -7097,7 +7132,7 @@ async function initEventListener() {
         return false;
       }
       function checkKeyDuplicate(keyName2) {
-        const datas = DataValue$1[UserSettingValue$1.CurrentDateKey]["items"];
+        const datas = DataValue$1[UserSettingValue$1.CurrentDateKey]["items"]["normal"];
         if (datas.some((item) => item.name === keyName2)) {
           const firstInput = InputModal.querySelector("form input[name='input-name']");
           showAlert({
@@ -7187,7 +7222,7 @@ async function initEventListener() {
         parent.querySelector(".bi-check-square").classList.add("d-none");
         if (span.textContent != newText) {
           span.textContent = newText;
-          const item = DataValue$1[UserSettingValue$1.CurrentDateKey]["items"].find((item2) => item2.name == oldText);
+          const item = DataValue$1[UserSettingValue$1.CurrentDateKey]["items"]["normal"].find((item2) => item2.name == oldText);
           item.name = newText;
           await Data$1.set(DataValue$1);
           renderDataContent(DataValue$1, UserSettingValue$1);
@@ -7198,18 +7233,22 @@ async function initEventListener() {
         const goal = span.textContent;
         const select = document.querySelector(".goal-options");
         select.value = goal;
-        AccountingDetailModal.querySelector(".modal-title-span").textContent = goal;
+        AccountingDetail.dataset.target = goal;
+        AccountingDetail.querySelector(".modal-title-span").textContent = goal;
         AccountingDetailPointer = goal;
+        renderAccountingDetail(DataValue$1[UserSettingValue$1.CurrentDateKey]["items"], AccountingDetailPointer);
+        GoalDetailModal_bs.hide();
+        Nav.querySelector(".nav-link[data-tab-target='#accountingDetail']").click();
         if (target.dataset.action == "accounting")
           AccountingModal_bs.show();
-        AccountingDetailModal_bs.show();
+        AccountingDetailPointer = "";
         break;
     }
   });
   GoalDetailModal.addEventListener("show.bs.modal", (e) => {
     const target = e.target;
     const targetName = target.dataset.targetName;
-    const item = DataValue$1[UserSettingValue$1.CurrentDateKey]["items"].find((item2) => item2.name == targetName);
+    const item = DataValue$1[UserSettingValue$1.CurrentDateKey]["items"]["normal"].find((item2) => item2.name == targetName);
     renderGoalDetailModal(targetName, item);
   });
   GoalDetailModal.addEventListener("hide.bs.modal", (e) => {
@@ -7226,14 +7265,20 @@ async function initEventListener() {
     }
   });
   AccountingModal.addEventListener("click", async (e) => {
+    var _a;
     const target = e.target;
     if (!target.dataset.action)
       return;
     const id = AccountingModal.dataset.id;
     const goal = AccountingModal.querySelector(".goal-options").value;
-    let index2 = DataValue$1[UserSettingValue$1.CurrentDateKey]["items"].findIndex((item) => item.name === goal);
-    const data = DataValue$1[UserSettingValue$1.CurrentDateKey]["items"][index2];
-    console.log(data);
+    const isUnset = ((_a = AccountingModal.querySelector(".goal-options").dataset) == null ? void 0 : _a.unset) ? true : false;
+    let data;
+    if (isUnset) {
+      data = DataValue$1[UserSettingValue$1.CurrentDateKey]["items"]["unset"];
+    } else {
+      let index2 = DataValue$1[UserSettingValue$1.CurrentDateKey]["items"]["normal"].findIndex((item) => item.name === goal);
+      data = DataValue$1[UserSettingValue$1.CurrentDateKey]["items"]["normal"][index2];
+    }
     let totalGoal = DataValue$1[UserSettingValue$1.CurrentDateKey]["totalGoal"];
     let current = data.current;
     let accounting = data.accounting;
@@ -7252,7 +7297,8 @@ async function initEventListener() {
           amount,
           bonus,
           date: AccountingModal.querySelector("[name='input-date']").value.replace(/-/g, "/"),
-          created_at: getCurrentFormattedDateTime()
+          created_at: getCurrentFormattedDateTime(),
+          unset: isUnset
         });
         totalGoal.current.amount += amount;
         totalGoal.current.bonus += bonus;
@@ -7267,16 +7313,16 @@ async function initEventListener() {
         break;
       case "update":
         let acc = accounting.find((item) => item.id === Number(id));
-        totalGoal.current.amount;
-        totalGoal.current.bonus;
+        const oldTotalGoalAmount = totalGoal.current.amount;
+        const oldTotalGoalBonus = totalGoal.current.bonus;
         const oldCurrentAmount = acc.amount;
         const oldCurrentBonus = acc.bonus;
         acc.name = AccountingModal.querySelector("[name='input-name']").value;
         acc.amount = amount;
         acc.bonus = bonus;
         acc.date = AccountingModal.querySelector("[name='input-date']").value.replace(/-/g, "/");
-        totalGoal.current.amount += -oldCurrentAmount + amount;
-        totalGoal.current.bonus += -oldCurrentBonus + bonus;
+        totalGoal.current.amount += -oldTotalGoalAmount + amount;
+        totalGoal.current.bonus += -oldTotalGoalBonus + bonus;
         current.amount += -oldCurrentAmount + amount;
         current.bonus += -oldCurrentBonus + bonus;
         await Data$1.set(DataValue$1);
@@ -7289,8 +7335,8 @@ async function initEventListener() {
           showCancelButton: true
         }, async (confirm2) => {
           if (confirm2.isConfirmed) {
-            index2 = accounting.findIndex((item) => item.id === Number(id));
-            accounting.splice(index2, 1);
+            index = accounting.findIndex((item) => item.id === Number(id));
+            accounting.splice(index, 1);
             totalGoal.current.amount -= amount;
             totalGoal.current.bonus -= bonus;
             current.amount -= amount;
@@ -7302,7 +7348,8 @@ async function initEventListener() {
         break;
     }
     renderAccountingDetail(DataValue$1[UserSettingValue$1.CurrentDateKey]["items"], AccountingDetailPointer);
-    renderGoalDetailModal(goal, data);
+    if (!isUnset)
+      renderGoalDetailModal(goal, data);
     renderDataContent(DataValue$1, UserSettingValue$1);
   });
   AccountingModal.addEventListener("show.bs.modal", (e) => {
@@ -7328,13 +7375,16 @@ async function initEventListener() {
     delete AccountingModal.dataset.action;
   });
   AccountingModal.addEventListener("hidden.bs.modal", (e) => {
-    AccountingModal.querySelector("[name='goal-options']").value = "\u5176\u4ED6\u82B1\u8CBB";
+    if (AccountingDetail.dataset.target)
+      AccountingModal.querySelector("[name='goal-options']").value = AccountingDetail.dataset.target;
+    else
+      AccountingModal.querySelector("[name='goal-options']").selectedIndex = 0;
     AccountingModal.querySelector("[name='input-name']").value = "";
     AccountingModal.querySelector("[name='input-target-money']").value = "";
     AccountingModal.querySelector("[name='input-bonus-money']").value = "";
     AccountingModal.querySelector("form").classList.remove("was-validated");
   });
-  AccountingDetailModal.addEventListener("click", (e) => {
+  AccountingDetailContent.addEventListener("click", (e) => {
     const target = e.target;
     const itemParent = target.closest(".accounting-item");
     const groupParent = target.closest(".accounting-group");
@@ -7358,17 +7408,6 @@ async function initEventListener() {
       AccountingModal_bs.show();
     }
   });
-  AccountingDetailModal.addEventListener("show.bs.modal", (e) => {
-    if (!AccountingDetailPointer) {
-      AccountingDetailModal.querySelector(".modal-title-span").textContent = "\u7E3D\u89BD";
-    }
-    renderAccountingDetail(DataValue$1[UserSettingValue$1.CurrentDateKey]["items"], AccountingDetailPointer);
-  });
-  AccountingDetailModal.addEventListener("hide.bs.modal", (e) => {
-    AccountingDetailPointer = "";
-  });
-  AccountingDetailModal.addEventListener("touchmove", hideCircleButton);
-  AccountingDetailModal.addEventListener("touchend", showCircleButton);
   document.querySelector("[contenteditable]").addEventListener("focus", (e) => {
     const range = document.createRange();
     const selection = window.getSelection();
@@ -7555,7 +7594,6 @@ async function initEventListener() {
     }
   }
   function handleItemsEnd(e) {
-    showCircleButton();
     setTimeout(() => {
       isLongPress = false;
     }, 0);
@@ -7566,7 +7604,6 @@ async function initEventListener() {
     }
   }
   function handleItemsMove(e) {
-    hideCircleButton();
     const target = e.target.closest(".items");
     if (target && target.classList.contains("items")) {
       const touch = e.touches ? e.touches[0] : e;
@@ -7590,19 +7627,9 @@ async function initEventListener() {
       target.classList.remove("nav_item-press-active");
     }
   }
-  function showCircleButton() {
-    document.querySelectorAll(".circle-button").forEach((btn) => {
-      btn.classList.remove("opacity-25");
-    });
-  }
-  function hideCircleButton() {
-    document.querySelectorAll(".circle-button").forEach((btn) => {
-      btn.classList.add("opacity-25");
-    });
-  }
   async function removeItem() {
     await showAlert({
-      title: "\u78BA\u5B9A\u6E05\u9664\u9078\u4E2D\u76EE\u6A19\u55CE\uFF1F",
+      title: "\u78BA\u5B9A\u522A\u9664\u9078\u4E2D\u76EE\u6A19\u55CE\uFF1F",
       icon: "warning",
       showCancelButton: true
     }, async (confirm2) => {
@@ -7612,7 +7639,7 @@ async function initEventListener() {
         DataValue$1 = await Data$1.remove(UserSettingValue$1.CurrentDateKey, nameArray);
         renderDataContent(DataValue$1, UserSettingValue$1);
         await showAlert({
-          title: "\u5DF2\u6E05\u9664\u9078\u4E2D\u76EE\u6A19",
+          title: "\u5DF2\u522A\u9664\u9078\u4E2D\u76EE\u6A19",
           icon: "success"
         }, resetStatus());
       }
@@ -7654,7 +7681,7 @@ async function updateDataItemsSort(newOrder) {
     map[name] = index2;
     return map;
   }, {});
-  DataValue$1[UserSettingValue$1.CurrentDateKey]["items"].sort((a, b) => orderMap[a.name] - orderMap[b.name]);
+  DataValue$1[UserSettingValue$1.CurrentDateKey]["items"]["normal"].sort((a, b) => orderMap[a.name] - orderMap[b.name]);
   await Data$1.set(DataValue$1);
 }
 let UserSetting, Data;

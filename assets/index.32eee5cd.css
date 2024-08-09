@@ -93,6 +93,7 @@ nav .nav-link span {
     right: 0;
     font-size: 14px;
     z-index: 10000;
+    pointer-events: none; /* 忽略点击事件 */
 }
 
 .no-animation {
@@ -174,8 +175,33 @@ nav {
     color: #0d6efd !important;
 }
 
-.text-danger {
-    color: #EA0000 !important;
+/* tab 切換特效 */
+.tab-content {
+    position: relative;
+}
+.tab-pane {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+.tab-pane.active {
+    opacity: 1;
+}
+.tab-pane.slide-in-right {
+    transform: translateX(100%);
+}
+.tab-pane.slide-out-left {
+    transform: translateX(-100%);
+}
+.tab-pane.slide-in-left {
+    transform: translateX(-100%);
+}
+.tab-pane.slide-out-right {
+    transform: translateX(100%);
 }
 
 .progress {
