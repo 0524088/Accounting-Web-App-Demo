@@ -576,7 +576,7 @@ registerPlugin("CapacitorHttp", {
   web: () => new CapacitorHttpPluginWeb()
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web.0928b281.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web.f36fa3b1.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
 });
 async function storage_setItem(key, value) {
   await Preferences.set({
@@ -3191,10 +3191,10 @@ var Encoding;
   Encoding2["UTF16"] = "utf16";
 })(Encoding || (Encoding = {}));
 registerPlugin("Filesystem", {
-  web: () => __vitePreload(() => import("./web.067096f8.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
+  web: () => __vitePreload(() => import("./web.1127c846.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
 });
 const App = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web.fd7562b1.js"), true ? [] : void 0).then((m) => new m.AppWeb())
+  web: () => __vitePreload(() => import("./web.d58e1a27.js"), true ? [] : void 0).then((m) => new m.AppWeb())
 });
 var defaultSetting = {
   "custom": {
@@ -7634,27 +7634,13 @@ async function updateDataItemsSort(newOrder) {
 }
 let UserSetting, Data;
 let UserSettingValue, DataValue;
-let LoadingMsgBox;
 window.addEventListener("DOMContentLoaded", async () => {
 });
 window.addEventListener("load", async () => {
-  LoadingMsgBox = Swal.fire({
-    title: "\u8CC7\u6599\u8B80\u53D6\u4E2D",
-    showClass: {
-      popup: "swal2-noanimation"
-    },
-    hideClass: {
-      popup: ""
-    },
-    didOpen: () => {
-      Swal.showLoading();
-    }
-  });
   UserSetting = await initUserSetting();
   UserSettingValue = await UserSetting.get();
   Data = await initData();
   DataValue = await Data.get();
-  LoadingMsgBox.close();
   await initDataContent(DataValue, UserSettingValue);
   await initEventListener();
   setTimeout(() => {
