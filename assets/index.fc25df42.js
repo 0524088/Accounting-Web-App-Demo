@@ -576,7 +576,7 @@ registerPlugin("CapacitorHttp", {
   web: () => new CapacitorHttpPluginWeb()
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web.3940eabd.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web.3a9e24de.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
 });
 async function storage_setItem(key, value) {
   await Preferences.set({
@@ -3191,10 +3191,10 @@ var Encoding;
   Encoding2["UTF16"] = "utf16";
 })(Encoding || (Encoding = {}));
 registerPlugin("Filesystem", {
-  web: () => __vitePreload(() => import("./web.213c11ca.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
+  web: () => __vitePreload(() => import("./web.14ffc78a.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
 });
 const App = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web.c708864f.js"), true ? [] : void 0).then((m) => new m.AppWeb())
+  web: () => __vitePreload(() => import("./web.bce0c003.js"), true ? [] : void 0).then((m) => new m.AppWeb())
 });
 var defaultSetting = {
   "custom": {
@@ -3623,10 +3623,10 @@ async function initData() {
   Data2.remove = async (date, nameArray = []) => {
     let data = await storage_getItem("Data");
     if (nameArray.length > 0) {
-      data[date]["items"] = data[date]["items"].filter((item) => !nameArray.includes(item.name));
+      data[date]["items"]["normal"] = data[date]["items"]["normal"].filter((item) => !nameArray.includes(item.name));
     } else {
       delete data[date]["goal"];
-      data[date]["items"] = [];
+      data[date]["items"]["normal"] = [];
     }
     await storage_setItem("Data", data);
     return data;
@@ -7687,8 +7687,6 @@ async function updateDataItemsSort(newOrder) {
 let UserSetting, Data;
 let UserSettingValue, DataValue;
 window.addEventListener("DOMContentLoaded", async () => {
-});
-window.addEventListener("load", async () => {
   UserSetting = await initUserSetting();
   UserSettingValue = await UserSetting.get();
   Data = await initData();
@@ -7700,6 +7698,8 @@ window.addEventListener("load", async () => {
     document.querySelector("#app-loading").classList.add("d-none");
     document.querySelector("#app").classList.remove("d-none");
   }, 1e3);
+});
+window.addEventListener("load", async () => {
 });
 function LocateHomePage() {
   if (UserSettingValue.HomeLocation == "accountingDetail") {
