@@ -80,10 +80,10 @@ const __vitePreload = function preload(baseModule, deps) {
   })).then(() => baseModule());
 };
 /*! Capacitor: https://capacitorjs.com/ - MIT License */
-const createCapacitorPlatforms = (win) => {
+const createCapacitorPlatforms = (win2) => {
   const defaultPlatformMap = /* @__PURE__ */ new Map();
   defaultPlatformMap.set("web", { name: "web" });
-  const capPlatforms = win.CapacitorPlatforms || {
+  const capPlatforms = win2.CapacitorPlatforms || {
     currentPlatform: { name: "web" },
     platforms: defaultPlatformMap
   };
@@ -99,7 +99,7 @@ const createCapacitorPlatforms = (win) => {
   capPlatforms.setPlatform = setPlatform;
   return capPlatforms;
 };
-const initPlatforms = (win) => win.CapacitorPlatforms = createCapacitorPlatforms(win);
+const initPlatforms = (win2) => win2.CapacitorPlatforms = createCapacitorPlatforms(win2);
 const CapacitorPlatforms = /* @__PURE__ */ initPlatforms(typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : {});
 CapacitorPlatforms.addPlatform;
 CapacitorPlatforms.setPlatform;
@@ -116,24 +116,24 @@ class CapacitorException extends Error {
     this.data = data;
   }
 }
-const getPlatformId = (win) => {
+const getPlatformId = (win2) => {
   var _a, _b;
-  if (win === null || win === void 0 ? void 0 : win.androidBridge) {
+  if (win2 === null || win2 === void 0 ? void 0 : win2.androidBridge) {
     return "android";
-  } else if ((_b = (_a = win === null || win === void 0 ? void 0 : win.webkit) === null || _a === void 0 ? void 0 : _a.messageHandlers) === null || _b === void 0 ? void 0 : _b.bridge) {
+  } else if ((_b = (_a = win2 === null || win2 === void 0 ? void 0 : win2.webkit) === null || _a === void 0 ? void 0 : _a.messageHandlers) === null || _b === void 0 ? void 0 : _b.bridge) {
     return "ios";
   } else {
     return "web";
   }
 };
-const createCapacitor = (win) => {
+const createCapacitor = (win2) => {
   var _a, _b, _c, _d, _e;
-  const capCustomPlatform = win.CapacitorCustomPlatform || null;
-  const cap = win.Capacitor || {};
+  const capCustomPlatform = win2.CapacitorCustomPlatform || null;
+  const cap = win2.Capacitor || {};
   const Plugins = cap.Plugins = cap.Plugins || {};
-  const capPlatforms = win.CapacitorPlatforms;
+  const capPlatforms = win2.CapacitorPlatforms;
   const defaultGetPlatform = () => {
-    return capCustomPlatform !== null ? capCustomPlatform.name : getPlatformId(win);
+    return capCustomPlatform !== null ? capCustomPlatform.name : getPlatformId(win2);
   };
   const getPlatform = ((_a = capPlatforms === null || capPlatforms === void 0 ? void 0 : capPlatforms.currentPlatform) === null || _a === void 0 ? void 0 : _a.getPlatform) || defaultGetPlatform;
   const defaultIsNativePlatform = () => getPlatform() !== "web";
@@ -151,10 +151,10 @@ const createCapacitor = (win) => {
   const isPluginAvailable = ((_c = capPlatforms === null || capPlatforms === void 0 ? void 0 : capPlatforms.currentPlatform) === null || _c === void 0 ? void 0 : _c.isPluginAvailable) || defaultIsPluginAvailable;
   const defaultGetPluginHeader = (pluginName) => {
     var _a2;
-    return (_a2 = cap.PluginHeaders) === null || _a2 === void 0 ? void 0 : _a2.find((h) => h.name === pluginName);
+    return (_a2 = cap.PluginHeaders) === null || _a2 === void 0 ? void 0 : _a2.find((h2) => h2.name === pluginName);
   };
   const getPluginHeader = ((_d = capPlatforms === null || capPlatforms === void 0 ? void 0 : capPlatforms.currentPlatform) === null || _d === void 0 ? void 0 : _d.getPluginHeader) || defaultGetPluginHeader;
-  const handleError = (err) => win.console.error(err);
+  const handleError = (err2) => win2.console.error(err2);
   const pluginMethodNoop = (_target, prop, pluginName) => {
     return Promise.reject(`${pluginName} does not have an implementation of "${prop}".`);
   };
@@ -283,7 +283,7 @@ const createCapacitor = (win) => {
   cap.isNative = cap.isNativePlatform();
   return cap;
 };
-const initCapacitorGlobal = (win) => win.Capacitor = createCapacitor(win);
+const initCapacitorGlobal = (win2) => win2.Capacitor = createCapacitor(win2);
 const Capacitor = /* @__PURE__ */ initCapacitorGlobal(typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : {});
 const registerPlugin = Capacitor.registerPlugin;
 Capacitor.Plugins;
@@ -576,7 +576,7 @@ registerPlugin("CapacitorHttp", {
   web: () => new CapacitorHttpPluginWeb()
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web.3a9e24de.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web.60bf8bb9.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
 });
 async function storage_setItem(key, value) {
   await Preferences.set({
@@ -2564,8 +2564,8 @@ const handleInputValue = (instance, params) => {
     show(input);
     input.focus();
     instance.hideLoading();
-  }).catch((err) => {
-    error(`Error in inputValue promise: ${err}`);
+  }).catch((err2) => {
+    error(`Error in inputValue promise: ${err2}`);
     input.value = "";
     show(input);
     input.focus();
@@ -3191,10 +3191,10 @@ var Encoding;
   Encoding2["UTF16"] = "utf16";
 })(Encoding || (Encoding = {}));
 registerPlugin("Filesystem", {
-  web: () => __vitePreload(() => import("./web.14ffc78a.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
+  web: () => __vitePreload(() => import("./web.bbfa89ac.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
 });
 const App = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web.bce0c003.js"), true ? [] : void 0).then((m) => new m.AppWeb())
+  web: () => __vitePreload(() => import("./web.b151c2d6.js"), true ? [] : void 0).then((m) => new m.AppWeb())
 });
 var defaultSetting = {
   "custom": {
@@ -4816,7 +4816,7 @@ Sortable.prototype = {
       } else {
         window.getSelection().removeAllRanges();
       }
-    } catch (err) {
+    } catch (err2) {
     }
   },
   _dragStarted: function _dragStarted(fallback, evt) {
@@ -6286,7 +6286,7 @@ var pickr_min = { exports: {} };
       }
       i(t2, "focus", () => i(window, "wheel", o2, { passive: false })), i(t2, "blur", () => s(window, "wheel", o2));
     }
-    const { min: u, max: h, floor: d, round: m } = Math;
+    const { min: u, max: h2, floor: d, round: m } = Math;
     function f(t2, e2, o2) {
       e2 /= 100, o2 /= 100;
       const n2 = d(t2 = t2 / 360 * 6), i2 = t2 - n2, s2 = o2 * (1 - e2), r2 = o2 * (1 - i2 * e2), a2 = o2 * (1 - (1 - i2) * e2), l2 = n2 % 6;
@@ -6297,7 +6297,7 @@ var pickr_min = { exports: {} };
       return 0 !== n2 && (e2 = 1 === n2 ? 0 : n2 < 0.5 ? e2 * o2 / (2 * n2) : e2 * o2 / (2 - 2 * n2)), [t2, 100 * e2, 100 * n2];
     }
     function b(t2, e2, o2) {
-      const n2 = u(t2 /= 255, e2 /= 255, o2 /= 255), i2 = h(t2, e2, o2), s2 = i2 - n2;
+      const n2 = u(t2 /= 255, e2 /= 255, o2 /= 255), i2 = h2(t2, e2, o2), s2 = i2 - n2;
       let r2, a2;
       if (0 === s2)
         r2 = a2 = 0;
@@ -6452,7 +6452,7 @@ var pickr_min = { exports: {} };
         return ((t4, e4, o4) => {
           const { container: n3, arrow: i2, margin: s2, padding: r2, position: a2, variantFlipOrder: l2, positionFlipOrder: c2 } = { container: document.documentElement.getBoundingClientRect(), ...S, ...o4 }, { left: p3, top: u2 } = e4.style;
           e4.style.left = "0", e4.style.top = "0";
-          const h2 = t4.getBoundingClientRect(), d2 = e4.getBoundingClientRect(), m2 = { t: h2.top - d2.height - s2, b: h2.bottom + s2, r: h2.right + s2, l: h2.left - d2.width - s2 }, f2 = { vs: h2.left, vm: h2.left + h2.width / 2 - d2.width / 2, ve: h2.left + h2.width - d2.width, hs: h2.top, hm: h2.bottom - h2.height / 2 - d2.height / 2, he: h2.bottom - d2.height }, [v2, b2 = "middle"] = a2.split("-"), y2 = c2[v2], g2 = l2[b2], { top: _2, left: w2, bottom: A2, right: $2 } = n3;
+          const h3 = t4.getBoundingClientRect(), d2 = e4.getBoundingClientRect(), m2 = { t: h3.top - d2.height - s2, b: h3.bottom + s2, r: h3.right + s2, l: h3.left - d2.width - s2 }, f2 = { vs: h3.left, vm: h3.left + h3.width / 2 - d2.width / 2, ve: h3.left + h3.width - d2.width, hs: h3.top, hm: h3.bottom - h3.height / 2 - d2.height / 2, he: h3.bottom - d2.height }, [v2, b2 = "middle"] = a2.split("-"), y2 = c2[v2], g2 = l2[b2], { top: _2, left: w2, bottom: A2, right: $2 } = n3;
           for (const t5 of y2) {
             const o5 = "t" === t5 || "b" === t5;
             let n4 = m2[t5];
@@ -6462,7 +6462,7 @@ var pickr_min = { exports: {} };
                 let m3 = f2[(o5 ? "v" : "h") + p5];
                 if (!(m3 < b3 || m3 + c3 + r2 > u3)) {
                   if (m3 -= d2[a3], n4 -= d2[s3], e4.style[a3] = `${m3}px`, e4.style[s3] = `${n4}px`, i2) {
-                    const e5 = o5 ? h2.width / 2 : h2.height / 2, r3 = c3 / 2, u4 = e5 > r3, d3 = m3 + { s: u4 ? r3 : e5, m: r3, e: u4 ? r3 : c3 - e5 }[p5], f3 = n4 + { t: l3, b: 0, r: 0, l: l3 }[t5];
+                    const e5 = o5 ? h3.width / 2 : h3.height / 2, r3 = c3 / 2, u4 = e5 > r3, d3 = m3 + { s: u4 ? r3 : e5, m: r3, e: u4 ? r3 : c3 - e5 }[p5], f3 = n4 + { t: l3, b: 0, r: 0, l: l3 }[t5];
                     i2.style[a3] = `${d3}px`, i2.style[s3] = `${f3}px`;
                   }
                   return t5 + p5;
@@ -6489,11 +6489,11 @@ var pickr_min = { exports: {} };
         ["nano", "monolith"].includes(n2) && !i2 && (t2.sliders = "h"), o2.interaction || (o2.interaction = {});
         const { preview: a2, opacity: l2, hue: c2, palette: p3 } = o2;
         o2.opacity = !s2 && l2, o2.palette = p3 || a2 || l2 || c2, this._preBuild(), this._buildComponents(), this._bindEvents(), this._finalBuild(), e2 && e2.length && e2.forEach((t3) => this.addSwatch(t3));
-        const { button: u2, app: h2 } = this._root;
-        this._nanopop = O(u2, h2, { margin: r2 }), u2.setAttribute("role", "button"), u2.setAttribute("aria-label", this._t("btn:toggle"));
+        const { button: u2, app: h3 } = this._root;
+        this._nanopop = O(u2, h3, { margin: r2 }), u2.setAttribute("role", "button"), u2.setAttribute("aria-label", this._t("btn:toggle"));
         const d2 = this;
         this._setupAnimationFrame = requestAnimationFrame(function e3() {
-          if (!h2.offsetWidth)
+          if (!h3.offsetWidth)
             return requestAnimationFrame(e3);
           d2.setColor(t2.default), d2._rePositioningPicker(), t2.defaultRepresentation && (d2._representation = t2.defaultRepresentation, d2.setColorRepresentation(d2._representation)), t2.showAlways && d2.show(), d2._initializingActive = false, d2._emit("init");
         });
@@ -7677,13 +7677,1116 @@ async function initEventListener() {
   }
 }
 async function updateDataItemsSort(newOrder) {
-  let orderMap = newOrder.reduce((map, name, index2) => {
-    map[name] = index2;
-    return map;
+  let orderMap = newOrder.reduce((map2, name, index2) => {
+    map2[name] = index2;
+    return map2;
   }, {});
   DataValue$1[UserSettingValue$1.CurrentDateKey]["items"]["normal"].sort((a, b) => orderMap[a.name] - orderMap[b.name]);
   await Data$1.set(DataValue$1);
 }
+const NAMESPACE = "jeep-sqlite";
+const BUILD = { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, asyncQueue: false, attachStyles: true, cloneNodeFix: false, cmpDidLoad: true, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: true, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: true, constructableCSS: true, cssAnnotations: true, devTools: false, disconnectedCallback: false, element: false, event: true, experimentalScopedSlotChanges: false, experimentalSlotFixes: false, formAssociated: false, hasRenderFn: true, hostListener: false, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: false, hydrateServerSide: false, hydratedAttribute: false, hydratedClass: true, hydratedSelectorName: "hydrated", initializeNextTick: false, invisiblePrehydration: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: false, member: true, method: true, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: true, propMutable: false, propNumber: false, propString: true, reflect: true, scoped: false, scopedSlotTextContentFix: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, slot: false, slotChildNodesFix: false, slotRelocation: false, state: true, style: true, svg: false, taskQueue: true, transformTagName: false, updatable: true, vdomAttribute: true, vdomClass: false, vdomFunctional: false, vdomKey: false, vdomListener: false, vdomPropOrAttr: true, vdomRef: false, vdomRender: false, vdomStyle: false, vdomText: false, vdomXlink: false, watchCallback: true };
+var __defProp2 = Object.defineProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp2(target, name, { get: all[name], enumerable: true });
+};
+var hostRefs = /* @__PURE__ */ new WeakMap();
+var getHostRef = (ref) => hostRefs.get(ref);
+var registerInstance = (lazyInstance, hostRef) => hostRefs.set(hostRef.$lazyInstance$ = lazyInstance, hostRef);
+var registerHost = (hostElement, cmpMeta) => {
+  const hostRef = {
+    $flags$: 0,
+    $hostElement$: hostElement,
+    $cmpMeta$: cmpMeta,
+    $instanceValues$: /* @__PURE__ */ new Map()
+  };
+  {
+    hostRef.$onInstancePromise$ = new Promise((r) => hostRef.$onInstanceResolve$ = r);
+  }
+  {
+    hostRef.$onReadyPromise$ = new Promise((r) => hostRef.$onReadyResolve$ = r);
+    hostElement["s-p"] = [];
+    hostElement["s-rc"] = [];
+  }
+  return hostRefs.set(hostElement, hostRef);
+};
+var isMemberInElement = (elm, memberName) => memberName in elm;
+var consoleError = (e, el) => (0, console.error)(e, el);
+var cmpModules = /* @__PURE__ */ new Map();
+var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
+  const exportName = cmpMeta.$tagName$.replace(/-/g, "_");
+  const bundleId = cmpMeta.$lazyBundleId$;
+  if (!bundleId) {
+    return void 0;
+  }
+  const module = cmpModules.get(bundleId);
+  if (module) {
+    return module[exportName];
+  }
+  if (!hmrVersionId || !BUILD.hotModuleReplacement) {
+    const processMod = (importedModule) => {
+      cmpModules.set(bundleId, importedModule);
+      return importedModule[exportName];
+    };
+    switch (bundleId) {
+      case "jeep-sqlite":
+        return __vitePreload(() => import(
+          /* webpackMode: "lazy" */
+          "./jeep-sqlite.entry.1b3124ca.js"
+        ), true ? [] : void 0).then(processMod, consoleError);
+    }
+  }
+  return __vitePreload(() => import(
+    /* @vite-ignore */
+    /* webpackInclude: /\.entry\.js$/ */
+    /* webpackExclude: /\.system\.entry\.js$/ */
+    /* webpackMode: "lazy" */
+    `./${bundleId}.entry.js${""}`
+  ), true ? [] : void 0).then((importedModule) => {
+    {
+      cmpModules.set(bundleId, importedModule);
+    }
+    return importedModule[exportName];
+  }, consoleError);
+};
+var styles = /* @__PURE__ */ new Map();
+var HYDRATED_CSS = "{visibility:hidden}.hydrated{visibility:inherit}";
+var SLOT_FB_CSS = "slot-fb{display:contents}slot-fb[hidden]{display:none}";
+var win = typeof window !== "undefined" ? window : {};
+var doc = win.document || { head: {} };
+var plt = {
+  $flags$: 0,
+  $resourcesUrl$: "",
+  jmp: (h2) => h2(),
+  raf: (h2) => requestAnimationFrame(h2),
+  ael: (el, eventName, listener, opts) => el.addEventListener(eventName, listener, opts),
+  rel: (el, eventName, listener, opts) => el.removeEventListener(eventName, listener, opts),
+  ce: (eventName, opts) => new CustomEvent(eventName, opts)
+};
+var promiseResolve = (v) => Promise.resolve(v);
+var supportsConstructableStylesheets = /* @__PURE__ */ (() => {
+  try {
+    new CSSStyleSheet();
+    return typeof new CSSStyleSheet().replaceSync === "function";
+  } catch (e) {
+  }
+  return false;
+})();
+var queuePending = false;
+var queueDomReads = [];
+var queueDomWrites = [];
+var queueTask = (queue, write) => (cb) => {
+  queue.push(cb);
+  if (!queuePending) {
+    queuePending = true;
+    if (write && plt.$flags$ & 4) {
+      nextTick(flush);
+    } else {
+      plt.raf(flush);
+    }
+  }
+};
+var consume = (queue) => {
+  for (let i2 = 0; i2 < queue.length; i2++) {
+    try {
+      queue[i2](performance.now());
+    } catch (e) {
+      consoleError(e);
+    }
+  }
+  queue.length = 0;
+};
+var flush = () => {
+  consume(queueDomReads);
+  {
+    consume(queueDomWrites);
+    if (queuePending = queueDomReads.length > 0) {
+      plt.raf(flush);
+    }
+  }
+};
+var nextTick = (cb) => promiseResolve().then(cb);
+var writeTask = /* @__PURE__ */ queueTask(queueDomWrites, true);
+var EMPTY_OBJ = {};
+var isDef = (v) => v != null;
+var isComplexType = (o) => {
+  o = typeof o;
+  return o === "object" || o === "function";
+};
+function queryNonceMetaTagContent(doc2) {
+  var _a, _b, _c;
+  return (_c = (_b = (_a = doc2.head) == null ? void 0 : _a.querySelector('meta[name="csp-nonce"]')) == null ? void 0 : _b.getAttribute("content")) != null ? _c : void 0;
+}
+var result_exports = {};
+__export(result_exports, {
+  err: () => err,
+  map: () => map,
+  ok: () => ok,
+  unwrap: () => unwrap,
+  unwrapErr: () => unwrapErr
+});
+var ok = (value) => ({
+  isOk: true,
+  isErr: false,
+  value
+});
+var err = (value) => ({
+  isOk: false,
+  isErr: true,
+  value
+});
+function map(result, fn) {
+  if (result.isOk) {
+    const val = fn(result.value);
+    if (val instanceof Promise) {
+      return val.then((newVal) => ok(newVal));
+    } else {
+      return ok(val);
+    }
+  }
+  if (result.isErr) {
+    const value = result.value;
+    return err(value);
+  }
+  throw "should never get here";
+}
+var unwrap = (result) => {
+  if (result.isOk) {
+    return result.value;
+  } else {
+    throw result.value;
+  }
+};
+var unwrapErr = (result) => {
+  if (result.isErr) {
+    return result.value;
+  } else {
+    throw result.value;
+  }
+};
+var createTime = (fnName, tagName = "") => {
+  {
+    return () => {
+      return;
+    };
+  }
+};
+var uniqueTime = (key, measureText) => {
+  {
+    return () => {
+      return;
+    };
+  }
+};
+var h = (nodeName, vnodeData, ...children) => {
+  let child = null;
+  let simple = false;
+  let lastSimple = false;
+  const vNodeChildren = [];
+  const walk = (c) => {
+    for (let i2 = 0; i2 < c.length; i2++) {
+      child = c[i2];
+      if (Array.isArray(child)) {
+        walk(child);
+      } else if (child != null && typeof child !== "boolean") {
+        if (simple = typeof nodeName !== "function" && !isComplexType(child)) {
+          child = String(child);
+        }
+        if (simple && lastSimple) {
+          vNodeChildren[vNodeChildren.length - 1].$text$ += child;
+        } else {
+          vNodeChildren.push(simple ? newVNode(null, child) : child);
+        }
+        lastSimple = simple;
+      }
+    }
+  };
+  walk(children);
+  const vnode = newVNode(nodeName, null);
+  vnode.$attrs$ = vnodeData;
+  if (vNodeChildren.length > 0) {
+    vnode.$children$ = vNodeChildren;
+  }
+  return vnode;
+};
+var newVNode = (tag, text) => {
+  const vnode = {
+    $flags$: 0,
+    $tag$: tag,
+    $text$: text,
+    $elm$: null,
+    $children$: null
+  };
+  {
+    vnode.$attrs$ = null;
+  }
+  return vnode;
+};
+var Host = {};
+var isHost = (node) => node && node.$tag$ === Host;
+var parsePropertyValue = (propValue, propType) => {
+  if (propValue != null && !isComplexType(propValue)) {
+    if (propType & 4) {
+      return propValue === "false" ? false : propValue === "" || !!propValue;
+    }
+    if (propType & 1) {
+      return String(propValue);
+    }
+    return propValue;
+  }
+  return propValue;
+};
+var getElement = (ref) => getHostRef(ref).$hostElement$;
+var createEvent = (ref, name, flags) => {
+  const elm = getElement(ref);
+  return {
+    emit: (detail) => {
+      return emitEvent(elm, name, {
+        bubbles: !!(flags & 4),
+        composed: !!(flags & 2),
+        cancelable: !!(flags & 1),
+        detail
+      });
+    }
+  };
+};
+var emitEvent = (elm, name, opts) => {
+  const ev = plt.ce(name, opts);
+  elm.dispatchEvent(ev);
+  return ev;
+};
+var rootAppliedStyles = /* @__PURE__ */ new WeakMap();
+var registerStyle = (scopeId2, cssText, allowCS) => {
+  let style2 = styles.get(scopeId2);
+  if (supportsConstructableStylesheets && allowCS) {
+    style2 = style2 || new CSSStyleSheet();
+    if (typeof style2 === "string") {
+      style2 = cssText;
+    } else {
+      style2.replaceSync(cssText);
+    }
+  } else {
+    style2 = cssText;
+  }
+  styles.set(scopeId2, style2);
+};
+var addStyle = (styleContainerNode, cmpMeta, mode) => {
+  var _a;
+  const scopeId2 = getScopeId(cmpMeta);
+  const style2 = styles.get(scopeId2);
+  styleContainerNode = styleContainerNode.nodeType === 11 ? styleContainerNode : doc;
+  if (style2) {
+    if (typeof style2 === "string") {
+      styleContainerNode = styleContainerNode.head || styleContainerNode;
+      let appliedStyles = rootAppliedStyles.get(styleContainerNode);
+      let styleElm;
+      if (!appliedStyles) {
+        rootAppliedStyles.set(styleContainerNode, appliedStyles = /* @__PURE__ */ new Set());
+      }
+      if (!appliedStyles.has(scopeId2)) {
+        {
+          styleElm = doc.createElement("style");
+          styleElm.innerHTML = style2;
+          const nonce = (_a = plt.$nonce$) != null ? _a : queryNonceMetaTagContent(doc);
+          if (nonce != null) {
+            styleElm.setAttribute("nonce", nonce);
+          }
+          const injectStyle = !(cmpMeta.$flags$ & 1) || cmpMeta.$flags$ & 1 && styleContainerNode.nodeName !== "HEAD";
+          if (injectStyle) {
+            styleContainerNode.insertBefore(styleElm, styleContainerNode.querySelector("link"));
+          }
+        }
+        if (cmpMeta.$flags$ & 4) {
+          styleElm.innerHTML += SLOT_FB_CSS;
+        }
+        if (appliedStyles) {
+          appliedStyles.add(scopeId2);
+        }
+      }
+    } else if (!styleContainerNode.adoptedStyleSheets.includes(style2)) {
+      styleContainerNode.adoptedStyleSheets = [...styleContainerNode.adoptedStyleSheets, style2];
+    }
+  }
+  return scopeId2;
+};
+var attachStyles = (hostRef) => {
+  const cmpMeta = hostRef.$cmpMeta$;
+  const elm = hostRef.$hostElement$;
+  const flags = cmpMeta.$flags$;
+  const endAttachStyles = createTime("attachStyles", cmpMeta.$tagName$);
+  const scopeId2 = addStyle(
+    elm.shadowRoot ? elm.shadowRoot : elm.getRootNode(),
+    cmpMeta
+  );
+  if (flags & 10 && flags & 2) {
+    elm["s-sc"] = scopeId2;
+    elm.classList.add(scopeId2 + "-h");
+  }
+  endAttachStyles();
+};
+var getScopeId = (cmp, mode) => "sc-" + cmp.$tagName$;
+var setAccessor = (elm, memberName, oldValue, newValue, isSvg, flags) => {
+  if (oldValue !== newValue) {
+    let isProp = isMemberInElement(elm, memberName);
+    memberName.toLowerCase();
+    {
+      const isComplex = isComplexType(newValue);
+      if ((isProp || isComplex && newValue !== null) && !isSvg) {
+        try {
+          if (!elm.tagName.includes("-")) {
+            const n = newValue == null ? "" : newValue;
+            if (memberName === "list") {
+              isProp = false;
+            } else if (oldValue == null || elm[memberName] != n) {
+              elm[memberName] = n;
+            }
+          } else {
+            elm[memberName] = newValue;
+          }
+        } catch (e) {
+        }
+      }
+      if (newValue == null || newValue === false) {
+        if (newValue !== false || elm.getAttribute(memberName) === "") {
+          {
+            elm.removeAttribute(memberName);
+          }
+        }
+      } else if ((!isProp || flags & 4 || isSvg) && !isComplex) {
+        newValue = newValue === true ? "" : newValue;
+        {
+          elm.setAttribute(memberName, newValue);
+        }
+      }
+    }
+  }
+};
+var updateElement = (oldVnode, newVnode, isSvgMode2) => {
+  const elm = newVnode.$elm$.nodeType === 11 && newVnode.$elm$.host ? newVnode.$elm$.host : newVnode.$elm$;
+  const oldVnodeAttrs = oldVnode && oldVnode.$attrs$ || EMPTY_OBJ;
+  const newVnodeAttrs = newVnode.$attrs$ || EMPTY_OBJ;
+  {
+    for (const memberName of sortedAttrNames(Object.keys(oldVnodeAttrs))) {
+      if (!(memberName in newVnodeAttrs)) {
+        setAccessor(elm, memberName, oldVnodeAttrs[memberName], void 0, isSvgMode2, newVnode.$flags$);
+      }
+    }
+  }
+  for (const memberName of sortedAttrNames(Object.keys(newVnodeAttrs))) {
+    setAccessor(elm, memberName, oldVnodeAttrs[memberName], newVnodeAttrs[memberName], isSvgMode2, newVnode.$flags$);
+  }
+};
+function sortedAttrNames(attrNames) {
+  return attrNames.includes("ref") ? [...attrNames.filter((attr) => attr !== "ref"), "ref"] : attrNames;
+}
+var scopeId;
+var hostTagName;
+var useNativeShadowDom = false;
+var isSvgMode = false;
+var createElm = (oldParentVNode, newParentVNode, childIndex, parentElm) => {
+  const newVNode2 = newParentVNode.$children$[childIndex];
+  let i2 = 0;
+  let elm;
+  let childNode;
+  {
+    elm = newVNode2.$elm$ = doc.createElement(
+      !useNativeShadowDom && BUILD.slotRelocation && newVNode2.$flags$ & 2 ? "slot-fb" : newVNode2.$tag$
+    );
+    {
+      updateElement(null, newVNode2, isSvgMode);
+    }
+    const rootNode = elm.getRootNode();
+    const isElementWithinShadowRoot = !rootNode.querySelector("body");
+    if (!isElementWithinShadowRoot && BUILD.scoped && isDef(scopeId) && elm["s-si"] !== scopeId) {
+      elm.classList.add(elm["s-si"] = scopeId);
+    }
+    if (newVNode2.$children$) {
+      for (i2 = 0; i2 < newVNode2.$children$.length; ++i2) {
+        childNode = createElm(oldParentVNode, newVNode2, i2);
+        if (childNode) {
+          elm.appendChild(childNode);
+        }
+      }
+    }
+  }
+  elm["s-hn"] = hostTagName;
+  return elm;
+};
+var addVnodes = (parentElm, before, parentVNode, vnodes, startIdx, endIdx) => {
+  let containerElm = parentElm;
+  let childNode;
+  if (containerElm.shadowRoot && containerElm.tagName === hostTagName) {
+    containerElm = containerElm.shadowRoot;
+  }
+  for (; startIdx <= endIdx; ++startIdx) {
+    if (vnodes[startIdx]) {
+      childNode = createElm(null, parentVNode, startIdx);
+      if (childNode) {
+        vnodes[startIdx].$elm$ = childNode;
+        insertBefore(containerElm, childNode, before);
+      }
+    }
+  }
+};
+var removeVnodes = (vnodes, startIdx, endIdx) => {
+  for (let index2 = startIdx; index2 <= endIdx; ++index2) {
+    const vnode = vnodes[index2];
+    if (vnode) {
+      const elm = vnode.$elm$;
+      if (elm) {
+        elm.remove();
+      }
+    }
+  }
+};
+var updateChildren = (parentElm, oldCh, newVNode2, newCh, isInitialRender = false) => {
+  let oldStartIdx = 0;
+  let newStartIdx = 0;
+  let oldEndIdx = oldCh.length - 1;
+  let oldStartVnode = oldCh[0];
+  let oldEndVnode = oldCh[oldEndIdx];
+  let newEndIdx = newCh.length - 1;
+  let newStartVnode = newCh[0];
+  let newEndVnode = newCh[newEndIdx];
+  let node;
+  while (oldStartIdx <= oldEndIdx && newStartIdx <= newEndIdx) {
+    if (oldStartVnode == null) {
+      oldStartVnode = oldCh[++oldStartIdx];
+    } else if (oldEndVnode == null) {
+      oldEndVnode = oldCh[--oldEndIdx];
+    } else if (newStartVnode == null) {
+      newStartVnode = newCh[++newStartIdx];
+    } else if (newEndVnode == null) {
+      newEndVnode = newCh[--newEndIdx];
+    } else if (isSameVnode(oldStartVnode, newStartVnode, isInitialRender)) {
+      patch(oldStartVnode, newStartVnode, isInitialRender);
+      oldStartVnode = oldCh[++oldStartIdx];
+      newStartVnode = newCh[++newStartIdx];
+    } else if (isSameVnode(oldEndVnode, newEndVnode, isInitialRender)) {
+      patch(oldEndVnode, newEndVnode, isInitialRender);
+      oldEndVnode = oldCh[--oldEndIdx];
+      newEndVnode = newCh[--newEndIdx];
+    } else if (isSameVnode(oldStartVnode, newEndVnode, isInitialRender)) {
+      patch(oldStartVnode, newEndVnode, isInitialRender);
+      insertBefore(parentElm, oldStartVnode.$elm$, oldEndVnode.$elm$.nextSibling);
+      oldStartVnode = oldCh[++oldStartIdx];
+      newEndVnode = newCh[--newEndIdx];
+    } else if (isSameVnode(oldEndVnode, newStartVnode, isInitialRender)) {
+      patch(oldEndVnode, newStartVnode, isInitialRender);
+      insertBefore(parentElm, oldEndVnode.$elm$, oldStartVnode.$elm$);
+      oldEndVnode = oldCh[--oldEndIdx];
+      newStartVnode = newCh[++newStartIdx];
+    } else {
+      {
+        node = createElm(oldCh && oldCh[newStartIdx], newVNode2, newStartIdx);
+        newStartVnode = newCh[++newStartIdx];
+      }
+      if (node) {
+        {
+          insertBefore(oldStartVnode.$elm$.parentNode, node, oldStartVnode.$elm$);
+        }
+      }
+    }
+  }
+  if (oldStartIdx > oldEndIdx) {
+    addVnodes(
+      parentElm,
+      newCh[newEndIdx + 1] == null ? null : newCh[newEndIdx + 1].$elm$,
+      newVNode2,
+      newCh,
+      newStartIdx,
+      newEndIdx
+    );
+  } else if (newStartIdx > newEndIdx) {
+    removeVnodes(oldCh, oldStartIdx, oldEndIdx);
+  }
+};
+var isSameVnode = (leftVNode, rightVNode, isInitialRender = false) => {
+  if (leftVNode.$tag$ === rightVNode.$tag$) {
+    return true;
+  }
+  return false;
+};
+var patch = (oldVNode, newVNode2, isInitialRender = false) => {
+  const elm = newVNode2.$elm$ = oldVNode.$elm$;
+  const oldChildren = oldVNode.$children$;
+  const newChildren = newVNode2.$children$;
+  {
+    {
+      {
+        updateElement(oldVNode, newVNode2, isSvgMode);
+      }
+    }
+    if (oldChildren !== null && newChildren !== null) {
+      updateChildren(elm, oldChildren, newVNode2, newChildren, isInitialRender);
+    } else if (newChildren !== null) {
+      addVnodes(elm, null, newVNode2, newChildren, 0, newChildren.length - 1);
+    } else if (!isInitialRender && BUILD.updatable && oldChildren !== null) {
+      removeVnodes(oldChildren, 0, oldChildren.length - 1);
+    }
+  }
+};
+var insertBefore = (parent, newNode, reference) => {
+  const inserted = parent == null ? void 0 : parent.insertBefore(newNode, reference);
+  return inserted;
+};
+var renderVdom = (hostRef, renderFnResults, isInitialLoad = false) => {
+  const hostElm = hostRef.$hostElement$;
+  const cmpMeta = hostRef.$cmpMeta$;
+  const oldVNode = hostRef.$vnode$ || newVNode(null, null);
+  const rootVnode = isHost(renderFnResults) ? renderFnResults : h(null, null, renderFnResults);
+  hostTagName = hostElm.tagName;
+  if (cmpMeta.$attrsToReflect$) {
+    rootVnode.$attrs$ = rootVnode.$attrs$ || {};
+    cmpMeta.$attrsToReflect$.map(
+      ([propName, attribute]) => rootVnode.$attrs$[attribute] = hostElm[propName]
+    );
+  }
+  if (isInitialLoad && rootVnode.$attrs$) {
+    for (const key of Object.keys(rootVnode.$attrs$)) {
+      if (hostElm.hasAttribute(key) && !["key", "ref", "style", "class"].includes(key)) {
+        rootVnode.$attrs$[key] = hostElm[key];
+      }
+    }
+  }
+  rootVnode.$tag$ = null;
+  rootVnode.$flags$ |= 4;
+  hostRef.$vnode$ = rootVnode;
+  rootVnode.$elm$ = oldVNode.$elm$ = hostElm.shadowRoot || hostElm;
+  {
+    scopeId = hostElm["s-sc"];
+  }
+  useNativeShadowDom = (cmpMeta.$flags$ & 1) !== 0;
+  patch(oldVNode, rootVnode, isInitialLoad);
+};
+var attachToAncestor = (hostRef, ancestorComponent) => {
+  if (ancestorComponent && !hostRef.$onRenderResolve$ && ancestorComponent["s-p"]) {
+    ancestorComponent["s-p"].push(new Promise((r) => hostRef.$onRenderResolve$ = r));
+  }
+};
+var scheduleUpdate = (hostRef, isInitialLoad) => {
+  {
+    hostRef.$flags$ |= 16;
+  }
+  if (hostRef.$flags$ & 4) {
+    hostRef.$flags$ |= 512;
+    return;
+  }
+  attachToAncestor(hostRef, hostRef.$ancestorComponent$);
+  const dispatch = () => dispatchHooks(hostRef, isInitialLoad);
+  return writeTask(dispatch);
+};
+var dispatchHooks = (hostRef, isInitialLoad) => {
+  const elm = hostRef.$hostElement$;
+  const endSchedule = createTime("scheduleUpdate", hostRef.$cmpMeta$.$tagName$);
+  const instance = hostRef.$lazyInstance$;
+  if (!instance) {
+    throw new Error(
+      `Can't render component <${elm.tagName.toLowerCase()} /> with invalid Stencil runtime! Make sure this imported component is compiled with a \`externalRuntime: true\` flag. For more information, please refer to https://stenciljs.com/docs/custom-elements#externalruntime`
+    );
+  }
+  let maybePromise;
+  if (isInitialLoad) {
+    {
+      maybePromise = safeCall(instance, "componentWillLoad");
+    }
+  }
+  endSchedule();
+  return enqueue(maybePromise, () => updateComponent(hostRef, instance, isInitialLoad));
+};
+var enqueue = (maybePromise, fn) => isPromisey(maybePromise) ? maybePromise.then(fn).catch((err2) => {
+  console.error(err2);
+  fn();
+}) : fn();
+var isPromisey = (maybePromise) => maybePromise instanceof Promise || maybePromise && maybePromise.then && typeof maybePromise.then === "function";
+var updateComponent = async (hostRef, instance, isInitialLoad) => {
+  var _a;
+  const elm = hostRef.$hostElement$;
+  const endUpdate = createTime("update", hostRef.$cmpMeta$.$tagName$);
+  const rc = elm["s-rc"];
+  if (isInitialLoad) {
+    attachStyles(hostRef);
+  }
+  const endRender = createTime("render", hostRef.$cmpMeta$.$tagName$);
+  {
+    callRender(hostRef, instance, elm, isInitialLoad);
+  }
+  if (rc) {
+    rc.map((cb) => cb());
+    elm["s-rc"] = void 0;
+  }
+  endRender();
+  endUpdate();
+  {
+    const childrenPromises = (_a = elm["s-p"]) != null ? _a : [];
+    const postUpdate = () => postUpdateComponent(hostRef);
+    if (childrenPromises.length === 0) {
+      postUpdate();
+    } else {
+      Promise.all(childrenPromises).then(postUpdate);
+      hostRef.$flags$ |= 4;
+      childrenPromises.length = 0;
+    }
+  }
+};
+var callRender = (hostRef, instance, elm, isInitialLoad) => {
+  try {
+    instance = instance.render();
+    {
+      hostRef.$flags$ &= ~16;
+    }
+    {
+      hostRef.$flags$ |= 2;
+    }
+    {
+      {
+        {
+          renderVdom(hostRef, instance, isInitialLoad);
+        }
+      }
+    }
+  } catch (e) {
+    consoleError(e, hostRef.$hostElement$);
+  }
+  return null;
+};
+var postUpdateComponent = (hostRef) => {
+  const tagName = hostRef.$cmpMeta$.$tagName$;
+  const elm = hostRef.$hostElement$;
+  const endPostUpdate = createTime("postUpdate", tagName);
+  const instance = hostRef.$lazyInstance$;
+  const ancestorComponent = hostRef.$ancestorComponent$;
+  if (!(hostRef.$flags$ & 64)) {
+    hostRef.$flags$ |= 64;
+    {
+      addHydratedFlag(elm);
+    }
+    {
+      safeCall(instance, "componentDidLoad");
+    }
+    endPostUpdate();
+    {
+      hostRef.$onReadyResolve$(elm);
+      if (!ancestorComponent) {
+        appDidLoad();
+      }
+    }
+  } else {
+    endPostUpdate();
+  }
+  {
+    hostRef.$onInstanceResolve$(elm);
+  }
+  {
+    if (hostRef.$onRenderResolve$) {
+      hostRef.$onRenderResolve$();
+      hostRef.$onRenderResolve$ = void 0;
+    }
+    if (hostRef.$flags$ & 512) {
+      nextTick(() => scheduleUpdate(hostRef, false));
+    }
+    hostRef.$flags$ &= ~(4 | 512);
+  }
+};
+var appDidLoad = (who) => {
+  {
+    addHydratedFlag(doc.documentElement);
+  }
+  nextTick(() => emitEvent(win, "appload", { detail: { namespace: NAMESPACE } }));
+};
+var safeCall = (instance, method, arg) => {
+  if (instance && instance[method]) {
+    try {
+      return instance[method](arg);
+    } catch (e) {
+      consoleError(e);
+    }
+  }
+  return void 0;
+};
+var addHydratedFlag = (elm) => {
+  var _a;
+  return elm.classList.add((_a = BUILD.hydratedSelectorName) != null ? _a : "hydrated");
+};
+var getValue = (ref, propName) => getHostRef(ref).$instanceValues$.get(propName);
+var setValue = (ref, propName, newVal, cmpMeta) => {
+  const hostRef = getHostRef(ref);
+  if (!hostRef) {
+    throw new Error(
+      `Couldn't find host element for "${cmpMeta.$tagName$}" as it is unknown to this Stencil runtime. This usually happens when integrating a 3rd party Stencil component with another Stencil component or application. Please reach out to the maintainers of the 3rd party Stencil component or report this on the Stencil Discord server (https://chat.stenciljs.com) or comment on this similar [GitHub issue](https://github.com/ionic-team/stencil/issues/5457).`
+    );
+  }
+  const elm = hostRef.$hostElement$;
+  const oldVal = hostRef.$instanceValues$.get(propName);
+  const flags = hostRef.$flags$;
+  const instance = hostRef.$lazyInstance$;
+  newVal = parsePropertyValue(newVal, cmpMeta.$members$[propName][0]);
+  const areBothNaN = Number.isNaN(oldVal) && Number.isNaN(newVal);
+  const didValueChange = newVal !== oldVal && !areBothNaN;
+  if ((!(flags & 8) || oldVal === void 0) && didValueChange) {
+    hostRef.$instanceValues$.set(propName, newVal);
+    if (instance) {
+      if (cmpMeta.$watchers$ && flags & 128) {
+        const watchMethods = cmpMeta.$watchers$[propName];
+        if (watchMethods) {
+          watchMethods.map((watchMethodName) => {
+            try {
+              instance[watchMethodName](newVal, oldVal, propName);
+            } catch (e) {
+              consoleError(e, elm);
+            }
+          });
+        }
+      }
+      if ((flags & (2 | 16)) === 2) {
+        scheduleUpdate(hostRef, false);
+      }
+    }
+  }
+};
+var proxyComponent = (Cstr, cmpMeta, flags) => {
+  var _a, _b;
+  const prototype = Cstr.prototype;
+  if (cmpMeta.$members$ || (cmpMeta.$watchers$ || Cstr.watchers)) {
+    if (Cstr.watchers && !cmpMeta.$watchers$) {
+      cmpMeta.$watchers$ = Cstr.watchers;
+    }
+    const members = Object.entries((_a = cmpMeta.$members$) != null ? _a : {});
+    members.map(([memberName, [memberFlags]]) => {
+      if (memberFlags & 31 || flags & 2 && memberFlags & 32) {
+        Object.defineProperty(prototype, memberName, {
+          get() {
+            return getValue(this, memberName);
+          },
+          set(newValue) {
+            setValue(this, memberName, newValue, cmpMeta);
+          },
+          configurable: true,
+          enumerable: true
+        });
+      } else if (flags & 1 && memberFlags & 64) {
+        Object.defineProperty(prototype, memberName, {
+          value(...args) {
+            var _a2;
+            const ref = getHostRef(this);
+            return (_a2 = ref == null ? void 0 : ref.$onInstancePromise$) == null ? void 0 : _a2.then(() => {
+              var _a3;
+              return (_a3 = ref.$lazyInstance$) == null ? void 0 : _a3[memberName](...args);
+            });
+          }
+        });
+      }
+    });
+    if (flags & 1) {
+      const attrNameToPropName = /* @__PURE__ */ new Map();
+      prototype.attributeChangedCallback = function(attrName, oldValue, newValue) {
+        plt.jmp(() => {
+          var _a2;
+          const propName = attrNameToPropName.get(attrName);
+          if (this.hasOwnProperty(propName)) {
+            newValue = this[propName];
+            delete this[propName];
+          } else if (prototype.hasOwnProperty(propName) && typeof this[propName] === "number" && this[propName] == newValue) {
+            return;
+          } else if (propName == null) {
+            const hostRef = getHostRef(this);
+            const flags2 = hostRef == null ? void 0 : hostRef.$flags$;
+            if (flags2 && !(flags2 & 8) && flags2 & 128 && newValue !== oldValue) {
+              const instance = hostRef.$lazyInstance$;
+              const entry = (_a2 = cmpMeta.$watchers$) == null ? void 0 : _a2[attrName];
+              entry == null ? void 0 : entry.forEach((callbackName) => {
+                if (instance[callbackName] != null) {
+                  instance[callbackName].call(instance, newValue, oldValue, attrName);
+                }
+              });
+            }
+            return;
+          }
+          this[propName] = newValue === null && typeof this[propName] === "boolean" ? false : newValue;
+        });
+      };
+      Cstr.observedAttributes = Array.from(
+        /* @__PURE__ */ new Set([
+          ...Object.keys((_b = cmpMeta.$watchers$) != null ? _b : {}),
+          ...members.filter(([_, m]) => m[0] & 15).map(([propName, m]) => {
+            var _a2;
+            const attrName = m[1] || propName;
+            attrNameToPropName.set(attrName, propName);
+            if (m[0] & 512) {
+              (_a2 = cmpMeta.$attrsToReflect$) == null ? void 0 : _a2.push([propName, attrName]);
+            }
+            return attrName;
+          })
+        ])
+      );
+    }
+  }
+  return Cstr;
+};
+var initializeComponent = async (elm, hostRef, cmpMeta, hmrVersionId) => {
+  let Cstr;
+  if ((hostRef.$flags$ & 32) === 0) {
+    hostRef.$flags$ |= 32;
+    const bundleId = cmpMeta.$lazyBundleId$;
+    if (bundleId) {
+      const CstrImport = loadModule(cmpMeta);
+      if (CstrImport && "then" in CstrImport) {
+        const endLoad = uniqueTime();
+        Cstr = await CstrImport;
+        endLoad();
+      } else {
+        Cstr = CstrImport;
+      }
+      if (!Cstr) {
+        throw new Error(`Constructor for "${cmpMeta.$tagName$}#${hostRef.$modeName$}" was not found`);
+      }
+      if (!Cstr.isProxied) {
+        {
+          cmpMeta.$watchers$ = Cstr.watchers;
+        }
+        proxyComponent(Cstr, cmpMeta, 2);
+        Cstr.isProxied = true;
+      }
+      const endNewInstance = createTime("createInstance", cmpMeta.$tagName$);
+      {
+        hostRef.$flags$ |= 8;
+      }
+      try {
+        new Cstr(hostRef);
+      } catch (e) {
+        consoleError(e);
+      }
+      {
+        hostRef.$flags$ &= ~8;
+      }
+      {
+        hostRef.$flags$ |= 128;
+      }
+      endNewInstance();
+      fireConnectedCallback(hostRef.$lazyInstance$);
+    } else {
+      Cstr = elm.constructor;
+      const cmpTag = elm.localName;
+      customElements.whenDefined(cmpTag).then(() => hostRef.$flags$ |= 128);
+    }
+    if (Cstr && Cstr.style) {
+      let style2;
+      if (typeof Cstr.style === "string") {
+        style2 = Cstr.style;
+      }
+      const scopeId2 = getScopeId(cmpMeta);
+      if (!styles.has(scopeId2)) {
+        const endRegisterStyles = createTime("registerStyles", cmpMeta.$tagName$);
+        registerStyle(scopeId2, style2, !!(cmpMeta.$flags$ & 1));
+        endRegisterStyles();
+      }
+    }
+  }
+  const ancestorComponent = hostRef.$ancestorComponent$;
+  const schedule = () => scheduleUpdate(hostRef, true);
+  if (ancestorComponent && ancestorComponent["s-rc"]) {
+    ancestorComponent["s-rc"].push(schedule);
+  } else {
+    schedule();
+  }
+};
+var fireConnectedCallback = (instance) => {
+  {
+    safeCall(instance, "connectedCallback");
+  }
+};
+var connectedCallback = (elm) => {
+  if ((plt.$flags$ & 1) === 0) {
+    const hostRef = getHostRef(elm);
+    const cmpMeta = hostRef.$cmpMeta$;
+    const endConnected = createTime("connectedCallback", cmpMeta.$tagName$);
+    if (!(hostRef.$flags$ & 1)) {
+      hostRef.$flags$ |= 1;
+      {
+        let ancestorComponent = elm;
+        while (ancestorComponent = ancestorComponent.parentNode || ancestorComponent.host) {
+          if (ancestorComponent["s-p"]) {
+            attachToAncestor(hostRef, hostRef.$ancestorComponent$ = ancestorComponent);
+            break;
+          }
+        }
+      }
+      if (cmpMeta.$members$) {
+        Object.entries(cmpMeta.$members$).map(([memberName, [memberFlags]]) => {
+          if (memberFlags & 31 && elm.hasOwnProperty(memberName)) {
+            const value = elm[memberName];
+            delete elm[memberName];
+            elm[memberName] = value;
+          }
+        });
+      }
+      {
+        initializeComponent(elm, hostRef, cmpMeta);
+      }
+    } else {
+      if (hostRef == null ? void 0 : hostRef.$lazyInstance$) {
+        fireConnectedCallback(hostRef.$lazyInstance$);
+      } else if (hostRef == null ? void 0 : hostRef.$onReadyPromise$) {
+        hostRef.$onReadyPromise$.then(() => fireConnectedCallback(hostRef.$lazyInstance$));
+      }
+    }
+    endConnected();
+  }
+};
+var disconnectInstance = (instance) => {
+};
+var disconnectedCallback = async (elm) => {
+  if ((plt.$flags$ & 1) === 0) {
+    const hostRef = getHostRef(elm);
+    if (hostRef == null ? void 0 : hostRef.$lazyInstance$)
+      ;
+    else if (hostRef == null ? void 0 : hostRef.$onReadyPromise$) {
+      hostRef.$onReadyPromise$.then(() => disconnectInstance());
+    }
+  }
+};
+var bootstrapLazy = (lazyBundles, options = {}) => {
+  var _a;
+  const endBootstrap = createTime();
+  const cmpTags = [];
+  const exclude = options.exclude || [];
+  const customElements2 = win.customElements;
+  const head = doc.head;
+  const metaCharset = /* @__PURE__ */ head.querySelector("meta[charset]");
+  const dataStyles = /* @__PURE__ */ doc.createElement("style");
+  const deferredConnectedCallbacks = [];
+  let appLoadFallback;
+  let isBootstrapping = true;
+  Object.assign(plt, options);
+  plt.$resourcesUrl$ = new URL(options.resourcesUrl || "./", doc.baseURI).href;
+  let hasSlotRelocation = false;
+  lazyBundles.map((lazyBundle) => {
+    lazyBundle[1].map((compactMeta) => {
+      var _a2;
+      const cmpMeta = {
+        $flags$: compactMeta[0],
+        $tagName$: compactMeta[1],
+        $members$: compactMeta[2],
+        $listeners$: compactMeta[3]
+      };
+      if (cmpMeta.$flags$ & 4) {
+        hasSlotRelocation = true;
+      }
+      {
+        cmpMeta.$members$ = compactMeta[2];
+      }
+      {
+        cmpMeta.$attrsToReflect$ = [];
+      }
+      {
+        cmpMeta.$watchers$ = (_a2 = compactMeta[4]) != null ? _a2 : {};
+      }
+      const tagName = cmpMeta.$tagName$;
+      const HostElement = class extends HTMLElement {
+        constructor(self2) {
+          super(self2);
+          this.hasRegisteredEventListeners = false;
+          self2 = this;
+          registerHost(self2, cmpMeta);
+          if (cmpMeta.$flags$ & 1) {
+            {
+              if (!self2.shadowRoot) {
+                {
+                  self2.attachShadow({ mode: "open" });
+                }
+              } else {
+                if (self2.shadowRoot.mode !== "open") {
+                  throw new Error(
+                    `Unable to re-use existing shadow root for ${cmpMeta.$tagName$}! Mode is set to ${self2.shadowRoot.mode} but Stencil only supports open shadow roots.`
+                  );
+                }
+              }
+            }
+          }
+        }
+        connectedCallback() {
+          getHostRef(this);
+          if (!this.hasRegisteredEventListeners) {
+            this.hasRegisteredEventListeners = true;
+          }
+          if (appLoadFallback) {
+            clearTimeout(appLoadFallback);
+            appLoadFallback = null;
+          }
+          if (isBootstrapping) {
+            deferredConnectedCallbacks.push(this);
+          } else {
+            plt.jmp(() => connectedCallback(this));
+          }
+        }
+        disconnectedCallback() {
+          plt.jmp(() => disconnectedCallback(this));
+        }
+        componentOnReady() {
+          return getHostRef(this).$onReadyPromise$;
+        }
+      };
+      cmpMeta.$lazyBundleId$ = lazyBundle[0];
+      if (!exclude.includes(tagName) && !customElements2.get(tagName)) {
+        cmpTags.push(tagName);
+        customElements2.define(
+          tagName,
+          proxyComponent(HostElement, cmpMeta, 1)
+        );
+      }
+    });
+  });
+  if (cmpTags.length > 0) {
+    if (hasSlotRelocation) {
+      dataStyles.textContent += SLOT_FB_CSS;
+    }
+    {
+      dataStyles.textContent += cmpTags.sort() + HYDRATED_CSS;
+    }
+    if (dataStyles.innerHTML.length) {
+      dataStyles.setAttribute("data-styles", "");
+      const nonce = (_a = plt.$nonce$) != null ? _a : queryNonceMetaTagContent(doc);
+      if (nonce != null) {
+        dataStyles.setAttribute("nonce", nonce);
+      }
+      head.insertBefore(dataStyles, metaCharset ? metaCharset.nextSibling : head.firstChild);
+    }
+  }
+  isBootstrapping = false;
+  if (deferredConnectedCallbacks.length) {
+    deferredConnectedCallbacks.map((host) => host.connectedCallback());
+  } else {
+    {
+      plt.jmp(() => appLoadFallback = setTimeout(appDidLoad, 30));
+    }
+  }
+  endBootstrap();
+};
+const globalScripts = () => {
+};
+const defineCustomElements = async (win2, options) => {
+  if (typeof window === "undefined")
+    return void 0;
+  await globalScripts();
+  return bootstrapLazy([["jeep-sqlite", [[1, "jeep-sqlite", { "autoSave": [516, "autosave"], "typeOrm": [516, "typeorm"], "wasmPath": [513, "wasmpath"], "pickText": [513, "picktext"], "saveText": [513, "savetext"], "buttonOptions": [513, "buttonoptions"], "innerAutoSave": [32], "innerTypeOrm": [32], "innerWasmPath": [32], "innerPickText": [32], "innerSaveText": [32], "innerButtonOptions": [32], "echo": [64], "createConnection": [64], "isConnection": [64], "closeConnection": [64], "open": [64], "close": [64], "getVersion": [64], "beginTransaction": [64], "commitTransaction": [64], "rollbackTransaction": [64], "isTransactionActive": [64], "execute": [64], "executeSet": [64], "run": [64], "query": [64], "getTableList": [64], "isDBExists": [64], "isDBOpen": [64], "deleteDatabase": [64], "isStoreOpen": [64], "copyFromAssets": [64], "isTableExists": [64], "createSyncTable": [64], "getSyncDate": [64], "setSyncDate": [64], "isJsonValid": [64], "importFromJson": [64], "exportToJson": [64], "deleteExportedRows": [64], "addUpgradeStatement": [64], "isDatabase": [64], "getDatabaseList": [64], "checkConnectionsConsistency": [64], "saveToStore": [64], "saveToLocalDisk": [64], "getFromLocalDiskToStore": [64], "getFromHTTPRequest": [64] }, null, { "autoSave": ["parseAutoSave"], "typeOrm": ["parseTypeOrm"], "wasmPath": ["parseWasmPath"], "pickText": ["parsePickText"], "saveText": ["parseSaveText"], "buttonOptions": ["parseButtonOptions"] }]]]], options);
+};
+(function() {
+  if ("undefined" !== typeof window && void 0 !== window.Reflect && void 0 !== window.customElements) {
+    var a = HTMLElement;
+    window.HTMLElement = function() {
+      return Reflect.construct(a, [], this.constructor);
+    };
+    HTMLElement.prototype = a.prototype;
+    HTMLElement.prototype.constructor = HTMLElement;
+    Object.setPrototypeOf(HTMLElement, a);
+  }
+})();
+registerPlugin("CapacitorSQLite", {
+  web: () => __vitePreload(() => import("./web.5658b00e.js"), true ? [] : void 0).then((m) => new m.CapacitorSQLiteWeb()),
+  electron: () => window.CapacitorCustomPlatform.plugins.CapacitorSQLite
+});
+defineCustomElements();
 let UserSetting, Data;
 let UserSettingValue, DataValue;
 window.addEventListener("DOMContentLoaded", async () => {
@@ -7708,4 +8811,4 @@ function LocateHomePage() {
 }
 var style = "";
 var custom = "";
-export { Encoding as E, WebPlugin as W, buildRequestInit as b };
+export { Encoding as E, WebPlugin as W, buildRequestInit as b, createEvent as c, getElement as g, registerInstance as r };
