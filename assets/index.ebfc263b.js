@@ -576,7 +576,7 @@ registerPlugin("CapacitorHttp", {
   web: () => new CapacitorHttpPluginWeb()
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web.60bf8bb9.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web.17e02725.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
 });
 async function storage_setItem(key, value) {
   await Preferences.set({
@@ -3191,10 +3191,10 @@ var Encoding;
   Encoding2["UTF16"] = "utf16";
 })(Encoding || (Encoding = {}));
 registerPlugin("Filesystem", {
-  web: () => __vitePreload(() => import("./web.bbfa89ac.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
+  web: () => __vitePreload(() => import("./web.eb7e3f11.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
 });
 const App = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web.b151c2d6.js"), true ? [] : void 0).then((m) => new m.AppWeb())
+  web: () => __vitePreload(() => import("./web.c851f2b0.js"), true ? [] : void 0).then((m) => new m.AppWeb())
 });
 var defaultSetting = {
   "custom": {
@@ -5902,19 +5902,27 @@ function renderItemsHTML(data, mode) {
   let items = data.items.normal;
   let html = "";
   let html_option = "";
-  for (let item of items) {
-    html += renderBarHTML(item, {
+  for (let item2 of items) {
+    html += renderBarHTML(item2, {
       mode
     });
-    html_option += renderAccountingOptionHTML(item.name);
+    html_option += renderAccountingOptionHTML(item2.name);
   }
   html_option += renderAccountingOptionHTML(data.items.unset.name, true);
+  let item = data.items.unset;
+  if (item.accounting.length > 0) {
+    html += renderBarHTML(item, {
+      mode,
+      unset: true
+    });
+  }
   document.querySelector(".goal-options").innerHTML = html_option;
   let total_html = renderBarHTML(data.totalGoal, {
     mode
   }, true);
-  if (items.length == 0)
-    ;
+  if (items.length == 0) {
+    html += "<div class='text-center h4'>\u5C1A\u672A\u5EFA\u7ACB\u76EE\u6A19\uFF0C\u8ACB\u5148\u65B0\u589E</div>";
+  }
   return total_html + html;
 }
 function renderBarHTML(item, param, isGoal) {
@@ -5923,21 +5931,48 @@ function renderBarHTML(item, param, isGoal) {
   const mode = param == null ? void 0 : param.mode;
   const goal = item == null ? void 0 : item.goal;
   const current = item == null ? void 0 : item.current;
-  const backgroundColor = item.color;
+  const backgroundColor = item.color || param.unset ? "#84C1FF" : getDefaultColor();
+  const textBackgroundColor = item.color ? item.color : "#84C1FF";
   let progressHTML = "";
-  if (isGoal == true) {
+  if (isGoal || param.unset) {
     if (mode == "i-mode" && param.imode == "bonus")
       return "";
+    if (!current)
+      return "";
+    let percent_html = "";
+    let number_html = "";
+    let color_html = "white";
+    let progress_html = "";
+    let currentNumber = current.amount + current.bonus;
+    if (goal) {
+      const total = goal.amount + goal.bonus;
+      let value = [
+        number2percent(current.amount / (total || 1)),
+        number2percent(current.bonus / (total || 1))
+      ];
+      value[2] = 100 - value[0] - value[1];
+      const percent = number2percent((current.amount + current.bonus) / (goal.amount + goal.bonus || 1));
+      color_html = getAmountAlertColor(value[0] + value[1]);
+      percent_html = `<span class="percent d-none" style="color: ${color_html}">${percent}%</span>`;
+      number_html = `${convert2ThousandsSeparator(currentNumber)}/${convert2ThousandsSeparator(total)}`;
+      progress_html = `
+                <div class="progress-bar" role="progressbar" style="width: ${value[0]}%; background-color: ${getBarColor("amount")};" aria-valuenow="${value[0]}" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" style="width: ${value[1]}%; background-color: ${getBarColor("bonus")};" aria-valuenow="${value[1]}" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" style="width: ${value[2]}%; background-color: ${getBarColor("background")};" aria-valuenow="${value[2]}" aria-valuemin="0" aria-valuemax="100"></div>
+            `;
+    } else {
+      percent_html = `<span class="percent d-none" style="color: white">$${convert2ThousandsSeparator(currentNumber)}</span>`;
+      number_html = convert2ThousandsSeparator(currentNumber);
+      progress_html = `<div class="progress-bar" role="progressbar" style="width: 100%; background-color: ${getBarColor("amount")};" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>`;
+    }
     progressHTML = `
             <div class="d-flex justify-content-end">
                 <span class="progress-item mb-1">
-                    <span class="percent d-none" style="color: white;">${convert2ThousandsSeparator(current.amount)}</span>
-                    <span class="number" style="color: white;">$${convert2ThousandsSeparator(current.amount)}</span>
+                    ${percent_html}
+                    <span class="number" style="color: ${color_html}">$${number_html}</span>
                 </span>
             </div>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 100%; background-color: ${getBarColor("amount")};" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
+            <div class="progress">${progress_html}</div>
         `;
   } else {
     const total = goal.amount + goal.bonus;
@@ -5948,7 +5983,7 @@ function renderBarHTML(item, param, isGoal) {
     ];
     value[2] = 100 - value[0] - value[1];
     const percent = number2percent((current.amount + current.bonus) / (goal.amount + goal.bonus || 1));
-    if (mode == "t-mode" || mode == "GoalDetailModal") {
+    if (mode == "t-mode") {
       currentNumber = current.amount + current.bonus;
       goalNumber = total;
       progressHTML = `
@@ -6031,8 +6066,6 @@ function renderBarHTML(item, param, isGoal) {
   return render2(name, mode, progressHTML, backgroundColor, isGoal);
   function render2(name2, mode2, progressHTML2, backgroundColor2, isGoal2 = false) {
     let html;
-    if (!backgroundColor2)
-      backgroundColor2 = getDefaultColor();
     const nav_html = `
             <div class="d-flex ms-auto align-items-center gap-2 mb-1 d-none nav_item">
                 <input class="form-check-input mb-auto select_item" type="checkbox">
@@ -6047,10 +6080,12 @@ function renderBarHTML(item, param, isGoal) {
                 -->
             </div>
         `;
+    const icon_html = isGoal2 || mode2 == "i-mode" || param.unset ? "" : `<i class="bi bi-circle-fill" style="color: ${textBackgroundColor}; font-size: 12px"></i>`;
     html = `
-            <div class="${isGoal2 ? "unsortable" : "items"} items-rounded" data-sort-name="${name2}" style="background-color: ${backgroundColor2}">
+            <div class="${isGoal2 ? "unsortable" : "items"} items-rounded" data-sort-name="${name2}" style="background-color: ${backgroundColor2} !important">
                 <div class="pb-4 pt-4 mt-2 mb-2 ms-4 me-4">
                     <div class="d-flex align-items-center justify-content-start mb-2 gap-2">
+                        ${icon_html}
                         <label class="form-label text-light h5 mb-1 item-long-word mw-100 ${mode2 == "i-mode" ? "text-center flex-grow-1" : ""}">${name2}</label>
                         ${isGoal2 ? "" : nav_html}
                     </div>
@@ -6998,7 +7033,7 @@ async function initEventListener() {
   InputModal.addEventListener("show.bs.modal", () => {
     const label = InputModal.querySelector("#label-set-total-target");
     const checkbox = InputModal.querySelector("#chk-set-total-target");
-    if (DataValue$1[UserSettingValue$1.CurrentDateKey]["goal"]) {
+    if (DataValue$1[UserSettingValue$1.CurrentDateKey]["totalGoal"]["goal"]) {
       label.textContent = "\u672C\u6708\u5DF2\u8A2D\u5B9A\u7E3D\u76EE\u6A19";
       checkbox.disabled = true;
       checkbox.checked = true;
@@ -7075,12 +7110,10 @@ async function initEventListener() {
               if (confirm2.isConfirmed) {
                 label.textContent = "\u672C\u6708\u5DF2\u8A2D\u5B9A\u7E3D\u76EE\u6A19";
                 checkbox.disabled = true;
-                DataValue$1[UserSettingValue$1.CurrentDateKey]["goal"] = {
-                  name: keyName,
+                DataValue$1[UserSettingValue$1.CurrentDateKey]["totalGoal"]["name"] = keyName;
+                DataValue$1[UserSettingValue$1.CurrentDateKey]["totalGoal"]["goal"] = {
                   amount: Number(inputs[1].value),
-                  bonus: Number(inputs[2].value),
-                  color: Pickr2.getColor(),
-                  create_at: getCurrentFormattedDateTime()
+                  bonus: Number(inputs[2].value)
                 };
                 await Data$1.set(DataValue$1);
                 showAlert({
@@ -7265,13 +7298,13 @@ async function initEventListener() {
     }
   });
   AccountingModal.addEventListener("click", async (e) => {
-    var _a;
     const target = e.target;
     if (!target.dataset.action)
       return;
     const id = AccountingModal.dataset.id;
-    const goal = AccountingModal.querySelector(".goal-options").value;
-    const isUnset = ((_a = AccountingModal.querySelector(".goal-options").dataset) == null ? void 0 : _a.unset) ? true : false;
+    const select = AccountingModal.querySelector(".goal-options");
+    const goal = select.value;
+    const isUnset = select.options[select.selectedIndex].dataset.hasOwnProperty("unset") ? true : false;
     let data;
     if (isUnset) {
       data = DataValue$1[UserSettingValue$1.CurrentDateKey]["items"]["unset"];
@@ -7561,12 +7594,12 @@ async function initEventListener() {
         break;
       case "DebugMode":
         UserSettingValue$1.DebugMode = target.checked;
+        if (!UserSettingValue$1.DebugMode) {
+          await storage_clear();
+        }
         break;
     }
     await UserSetting$1.set(UserSettingValue$1);
-    if (!UserSettingValue$1.DebugMode) {
-      await storage_clear();
-    }
     Data$1 = await initData();
     DataValue$1 = await Data$1.get();
     await initDataContent(DataValue$1, UserSettingValue$1);
@@ -7733,7 +7766,7 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
       case "jeep-sqlite":
         return __vitePreload(() => import(
           /* webpackMode: "lazy" */
-          "./jeep-sqlite.entry.1b3124ca.js"
+          "./jeep-sqlite.entry.4da24753.js"
         ), true ? [] : void 0).then(processMod, consoleError);
     }
   }
@@ -8783,7 +8816,7 @@ const defineCustomElements = async (win2, options) => {
   }
 })();
 registerPlugin("CapacitorSQLite", {
-  web: () => __vitePreload(() => import("./web.5658b00e.js"), true ? [] : void 0).then((m) => new m.CapacitorSQLiteWeb()),
+  web: () => __vitePreload(() => import("./web.12f1ab80.js"), true ? [] : void 0).then((m) => new m.CapacitorSQLiteWeb()),
   electron: () => window.CapacitorCustomPlatform.plugins.CapacitorSQLite
 });
 defineCustomElements();
@@ -8801,8 +8834,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     document.querySelector("#app-loading").classList.add("d-none");
     document.querySelector("#app").classList.remove("d-none");
   }, 1e3);
-});
-window.addEventListener("load", async () => {
 });
 function LocateHomePage() {
   if (UserSettingValue.HomeLocation == "accountingDetail") {
