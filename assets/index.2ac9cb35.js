@@ -576,7 +576,7 @@ registerPlugin("CapacitorHttp", {
   web: () => new CapacitorHttpPluginWeb()
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web.17e02725.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web.f12dee3e.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
 });
 async function storage_setItem(key, value) {
   await Preferences.set({
@@ -3191,10 +3191,10 @@ var Encoding;
   Encoding2["UTF16"] = "utf16";
 })(Encoding || (Encoding = {}));
 registerPlugin("Filesystem", {
-  web: () => __vitePreload(() => import("./web.eb7e3f11.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
+  web: () => __vitePreload(() => import("./web.627be63e.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
 });
 const App = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web.c851f2b0.js"), true ? [] : void 0).then((m) => new m.AppWeb())
+  web: () => __vitePreload(() => import("./web.d337f5da.js"), true ? [] : void 0).then((m) => new m.AppWeb())
 });
 var defaultSetting = {
   "custom": {
@@ -3604,6 +3604,14 @@ function getDayOfWeekToCalendar(d) {
   const daysOfWeek = ["\u661F\u671F\u65E5", "\u661F\u671F\u4E00", "\u661F\u671F\u4E8C", "\u661F\u671F\u4E09", "\u661F\u671F\u56DB", "\u661F\u671F\u4E94", "\u661F\u671F\u516D"];
   return daysOfWeek[dayOfWeek];
 }
+function getOffsetMonth(dateString, offset) {
+  const [year, month] = dateString.split("/").map(Number);
+  const date = new Date(year, month - 1);
+  date.setMonth(date.getMonth() + offset);
+  const previousYear = date.getFullYear();
+  const previousMonth = String(date.getMonth() + 1).padStart(2, "0");
+  return `${previousYear}/${previousMonth}`;
+}
 async function initData() {
   let Data2 = {};
   let UserSetting2 = await initUserSetting();
@@ -3631,14 +3639,15 @@ async function initData() {
     await storage_setItem("Data", data);
     return data;
   };
+  Data2.getDefault = getDefault;
   return Data2;
 }
-function getDefault() {
+function getDefault(formattedDate = null) {
   let today = new Date();
   let year = today.getFullYear();
   let month = today.getMonth() + 1;
   month = month < 10 ? "0" + month : month;
-  let formattedDate = `${year}/${month}`;
+  formattedDate = formattedDate != null ? formattedDate : `${year}/${month}`;
   return {
     [formattedDate]: {
       currentId: 0,
@@ -5865,7 +5874,7 @@ async function initDataContent(DataValue2, UserSettingValue2) {
   UserSettingValue2.CurrentDateKey = keyArray[keyArray.length - 1];
   let UserSetting2 = await initUserSetting();
   await UserSetting2.set(UserSettingValue2);
-  renderCarouselData(keyArray);
+  renderCarouselData(UserSettingValue2.CurrentDateKey);
   renderDataContent(DataValue2, UserSettingValue2);
   renderUserSettingContent(UserSettingValue2);
 }
@@ -6162,19 +6171,11 @@ function renderAccountingDetail(items, goal) {
   }
   AccountingDetailContent.innerHTML = html;
 }
-function renderCarouselData(keyArray) {
-  const CarouselInner = document.querySelector(".carousel-inner");
-  let html = "";
-  const len = keyArray.length;
-  keyArray.forEach((element, index2) => {
-    const date = element.split("/");
-    html += `
-            <div class="carousel-item ${index2 == len - 1 ? "active" : ""}">
-                <div class="text-center date" data-value="${element}">${date[0]}\u5E74${date[1]}\u6708</div>
-            </div>
-        `;
-  });
-  CarouselInner.innerHTML = html;
+function renderCarouselData(value) {
+  const CarouselInner = document.querySelector(".carousel-inner .carousel-item.active");
+  const date = value.split("/");
+  CarouselInner.dataset.value = value;
+  CarouselInner.innerHTML = `${date[0]}\u5E74${date[1]}\u6708`;
 }
 function renderSortable(element) {
   if (sortableInstance) {
@@ -6881,7 +6882,7 @@ async function initEventListener() {
   const PickrModal_bs = new bootstrap.Modal(PickrModal);
   const ButtonChangeMode = document.querySelector("#btn-change-mode");
   const ItemMainNav = document.querySelector("#item-main-nav");
-  const CarouselData = document.querySelector("#carouselData");
+  const CarouselControl = document.querySelectorAll(".carousel-control");
   document.querySelector("#home");
   const HomeContent = document.querySelector("#home-content");
   const AccountingDetail = document.querySelector("#accountingDetail");
@@ -7223,12 +7224,24 @@ async function initEventListener() {
     resetStatus();
     renderDataContent(DataValue$1, UserSettingValue$1);
   });
-  CarouselData.addEventListener("slide.bs.carousel", (event) => {
-    const activeSlideIndex = event.to;
-    const slides = document.querySelectorAll(".carousel-item");
-    UserSettingValue$1.CurrentDateKey = slides[activeSlideIndex].querySelector(".date").dataset.value;
-    UserSetting$1.set(UserSettingValue$1);
-    renderDataContent(DataValue$1, UserSettingValue$1);
+  CarouselControl.forEach(async (control) => {
+    control.addEventListener("click", async (event) => {
+      let date = "";
+      if (control.classList.contains("carousel-control-prev")) {
+        date = getOffsetMonth(UserSettingValue$1.CurrentDateKey, -1);
+      }
+      if (control.classList.contains("carousel-control-next")) {
+        date = getOffsetMonth(UserSettingValue$1.CurrentDateKey, 1);
+      }
+      if (!(date in DataValue$1)) {
+        DataValue$1[date] = Data$1.getDefault(date)[date];
+        await Data$1.set(DataValue$1);
+      }
+      UserSettingValue$1.CurrentDateKey = date;
+      await UserSetting$1.set(UserSettingValue$1);
+      renderDataContent(DataValue$1, UserSettingValue$1);
+      renderCarouselData(UserSettingValue$1.CurrentDateKey);
+    });
   });
   GoalDetailModal.addEventListener("click", async (e) => {
     var _a;
@@ -7766,7 +7779,7 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
       case "jeep-sqlite":
         return __vitePreload(() => import(
           /* webpackMode: "lazy" */
-          "./jeep-sqlite.entry.4da24753.js"
+          "./jeep-sqlite.entry.f1a4fa7e.js"
         ), true ? [] : void 0).then(processMod, consoleError);
     }
   }
@@ -8816,7 +8829,7 @@ const defineCustomElements = async (win2, options) => {
   }
 })();
 registerPlugin("CapacitorSQLite", {
-  web: () => __vitePreload(() => import("./web.12f1ab80.js"), true ? [] : void 0).then((m) => new m.CapacitorSQLiteWeb()),
+  web: () => __vitePreload(() => import("./web.3d256291.js"), true ? [] : void 0).then((m) => new m.CapacitorSQLiteWeb()),
   electron: () => window.CapacitorCustomPlatform.plugins.CapacitorSQLite
 });
 defineCustomElements();
