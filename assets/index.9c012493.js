@@ -576,7 +576,7 @@ registerPlugin("CapacitorHttp", {
   web: () => new CapacitorHttpPluginWeb()
 });
 const Preferences = registerPlugin("Preferences", {
-  web: () => __vitePreload(() => import("./web.f12dee3e.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
+  web: () => __vitePreload(() => import("./web.2a811e32.js"), true ? [] : void 0).then((m) => new m.PreferencesWeb())
 });
 async function storage_setItem(key, value) {
   await Preferences.set({
@@ -3191,28 +3191,40 @@ var Encoding;
   Encoding2["UTF16"] = "utf16";
 })(Encoding || (Encoding = {}));
 registerPlugin("Filesystem", {
-  web: () => __vitePreload(() => import("./web.627be63e.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
+  web: () => __vitePreload(() => import("./web.89ec076a.js"), true ? [] : void 0).then((m) => new m.FilesystemWeb())
 });
 const App = registerPlugin("App", {
-  web: () => __vitePreload(() => import("./web.d337f5da.js"), true ? [] : void 0).then((m) => new m.AppWeb())
+  web: () => __vitePreload(() => import("./web.6dea3625.js"), true ? [] : void 0).then((m) => new m.AppWeb())
 });
-var defaultSetting = {
-  "custom": {
-    "BarAlertRange": {
-      "middle": 70,
-      "warning": 80,
-      "danger": 90
-    }
-  },
-  "HomeLocation": "home",
-  "Mode": "t-mode",
-  "CurrentDateKey": "",
-  "NewItemPosition": "top",
-  "ShowType": "number",
-  "DebugMode": false,
-  "Pickr": {
-    "Swatches": ["#FF0000", "#00FF00", "#0000FF"]
+const custom$1 = {
+  BarAlertRange: {
+    middle: 70,
+    warning: 80,
+    danger: 90
   }
+};
+const HomeLocation = "home";
+const Mode = "t-mode";
+const CurrentDateKey = "";
+const NewItemPosition = "top";
+const ShowType = "number";
+const DebugMode = false;
+const Pickr$1 = {
+  Swatches: [
+    "#FF0000",
+    "#00FF00",
+    "#0000FF"
+  ]
+};
+var defaultSetting = {
+  custom: custom$1,
+  HomeLocation,
+  Mode,
+  CurrentDateKey,
+  NewItemPosition,
+  ShowType,
+  DebugMode,
+  Pickr: Pickr$1
 };
 async function initUserSetting() {
   let userSetting = {};
@@ -3228,346 +3240,361 @@ async function initUserSetting() {
 }
 var demo_Data = {
   "2024/06": {
-    "currentId": 9,
-    "totalGoal": {
-      "name": "\u672C\u6708\u6709\u8A2D\u5B9A\u7E3D\u984D",
-      "goal": {
-        "amount": 5e3,
-        "bonus": 0
+    currentId: 9,
+    totalGoal: {
+      name: "\u672C\u6708\u6709\u8A2D\u5B9A\u7E3D\u984D",
+      goal: {
+        amount: 5e3,
+        bonus: 0
       },
-      "current": {
-        "amount": 3400,
-        "bonus": 30
+      current: {
+        amount: 3400,
+        bonus: 30
       }
     },
-    "items": {
-      "unset": {
-        "name": "\u5176\u4ED6\u82B1\u8CBB",
-        "current": {
-          "amount": 400,
-          "bonus": 100
+    items: {
+      unset: {
+        name: "\u5176\u4ED6\u82B1\u8CBB",
+        current: {
+          amount: 400,
+          bonus: 100
         },
-        "accounting": [{
-          "id": 8,
-          "name": "\u5176\u4ED6\u82B1\u8CBB1",
-          "amount": 300,
-          "bonus": 100,
-          "date": "2024/07/19",
-          "created_at": "2024/07/22 00:00:00",
-          "unset": true
-        }, {
-          "id": 9,
-          "name": "\u5176\u4ED6\u82B1\u8CBB2",
-          "amount": 100,
-          "bonus": 0,
-          "date": "2024/07/22",
-          "created_at": "2024/07/22 00:00:00",
-          "unset": true
-        }],
-        "unset": true
+        accounting: [
+          {
+            id: 8,
+            name: "\u5176\u4ED6\u82B1\u8CBB1",
+            amount: 300,
+            bonus: 100,
+            date: "2024/07/19",
+            created_at: "2024/07/22 00:00:00",
+            unset: true
+          },
+          {
+            id: 9,
+            name: "\u5176\u4ED6\u82B1\u8CBB2",
+            amount: 100,
+            bonus: 0,
+            date: "2024/07/22",
+            created_at: "2024/07/22 00:00:00",
+            unset: true
+          }
+        ],
+        unset: true
       },
-      "normal": [
+      normal: [
         {
-          "name": "\u6E2C\u8A66\u76EE\u6A191",
-          "goal": {
-            "amount": 500,
-            "bonus": 0
+          name: "\u6E2C\u8A66\u76EE\u6A191",
+          goal: {
+            amount: 500,
+            bonus: 0
           },
-          "current": {
-            "amount": 700,
-            "bonus": 10
+          current: {
+            amount: 700,
+            bonus: 10
           },
-          "accounting": [{
-            "id": 0,
-            "name": "\u6E2C\u8A66\u8A18\u5E331-1",
-            "amount": 100,
-            "bonus": 0,
-            "date": "2024/07/22",
-            "created_at": "2024/07/22 00:00:00"
-          }, {
-            "id": 1,
-            "name": "\u6E2C\u8A66\u8A18\u5E331-2",
-            "amount": 500,
-            "bonus": 10,
-            "date": "2024/07/22",
-            "created_at": "2024/07/22 01:00:00"
-          }, {
-            "id": 2,
-            "name": "\u6E2C\u8A66\u8A18\u5E331-3",
-            "amount": 100,
-            "bonus": 0,
-            "date": "2024/07/10",
-            "created_at": "2024/07/22 02:00:00"
-          }],
-          "color": "#FFDC35",
-          "created_at": "2024/07/19 00:00:00"
+          accounting: [
+            {
+              id: 0,
+              name: "\u6E2C\u8A66\u8A18\u5E331-1",
+              amount: 100,
+              bonus: 0,
+              date: "2024/07/22",
+              created_at: "2024/07/22 00:00:00"
+            },
+            {
+              id: 1,
+              name: "\u6E2C\u8A66\u8A18\u5E331-2",
+              amount: 500,
+              bonus: 10,
+              date: "2024/07/22",
+              created_at: "2024/07/22 01:00:00"
+            },
+            {
+              id: 2,
+              name: "\u6E2C\u8A66\u8A18\u5E331-3",
+              amount: 100,
+              bonus: 0,
+              date: "2024/07/10",
+              created_at: "2024/07/22 02:00:00"
+            }
+          ],
+          color: "#FFDC35",
+          created_at: "2024/07/19 00:00:00"
         },
         {
-          "name": "\u6E2C\u8A66\u76EE\u6A192",
-          "goal": {
-            "amount": 500,
-            "bonus": 500
+          name: "\u6E2C\u8A66\u76EE\u6A192",
+          goal: {
+            amount: 500,
+            bonus: 500
           },
-          "current": {
-            "amount": 800,
-            "bonus": 10
+          current: {
+            amount: 800,
+            bonus: 10
           },
-          "accounting": [{
-            "id": 3,
-            "name": "\u6E2C\u8A66\u8A18\u5E332-1",
-            "amount": 650,
-            "bonus": 5,
-            "date": "2024/07/24",
-            "created_at": "2024/07/24 00:00:00"
-          }, {
-            "id": 4,
-            "name": "\u6E2C\u8A66\u8A18\u5E332-2",
-            "amount": 150,
-            "bonus": 5,
-            "date": "2024/07/25",
-            "created_at": "2024/07/24 01:00:00"
-          }],
-          "color": "#FFBD9D",
-          "created_at": "2024/07/23 00:00:00"
+          accounting: [
+            {
+              id: 3,
+              name: "\u6E2C\u8A66\u8A18\u5E332-1",
+              amount: 650,
+              bonus: 5,
+              date: "2024/07/24",
+              created_at: "2024/07/24 00:00:00"
+            },
+            {
+              id: 4,
+              name: "\u6E2C\u8A66\u8A18\u5E332-2",
+              amount: 150,
+              bonus: 5,
+              date: "2024/07/25",
+              created_at: "2024/07/24 01:00:00"
+            }
+          ],
+          color: "#FFBD9D",
+          created_at: "2024/07/23 00:00:00"
         },
         {
-          "name": "\u6E2C\u8A66\u76EE\u6A193",
-          "goal": {
-            "amount": 500,
-            "bonus": 500
+          name: "\u6E2C\u8A66\u76EE\u6A193",
+          goal: {
+            amount: 500,
+            bonus: 500
           },
-          "current": {
-            "amount": 900,
-            "bonus": 10
+          current: {
+            amount: 900,
+            bonus: 10
           },
-          "accounting": [{
-            "id": 5,
-            "name": "\u6E2C\u8A66\u8A18\u5E333-1",
-            "amount": 900,
-            "bonus": 10,
-            "date": "2024/07/22",
-            "created_at": "2024/07/23 00:00:00"
-          }],
-          "color": "#FFFFAA",
-          "created_at": "2024/07/21 01:00:00"
+          accounting: [
+            {
+              id: 5,
+              name: "\u6E2C\u8A66\u8A18\u5E333-1",
+              amount: 900,
+              bonus: 10,
+              date: "2024/07/22",
+              created_at: "2024/07/23 00:00:00"
+            }
+          ],
+          color: "#FFFFAA",
+          created_at: "2024/07/21 01:00:00"
         },
         {
-          "name": "\u6E2C\u8A66\u76EE\u6A194",
-          "goal": {
-            "amount": 2e3,
-            "bonus": 100
+          name: "\u6E2C\u8A66\u76EE\u6A194",
+          goal: {
+            amount: 2e3,
+            bonus: 100
           },
-          "current": {
-            "amount": 1e3,
-            "bonus": 0
+          current: {
+            amount: 1e3,
+            bonus: 0
           },
-          "accounting": [{
-            "id": 6,
-            "name": "\u6E2C\u8A66\u8A18\u5E334-1",
-            "amount": 500,
-            "bonus": 0,
-            "date": "2024/07/20",
-            "created_at": "2024/07/23 00:00:00"
-          }, {
-            "id": 7,
-            "name": "\u6E2C\u8A66\u8A18\u5E334-2",
-            "amount": 500,
-            "bonus": 0,
-            "date": "2024/07/10",
-            "created_at": "2024/07/23 00:00:00"
-          }],
-          "color": "#A8FF24",
-          "created_at": "2024/07/23 00:10:00"
+          accounting: [
+            {
+              id: 6,
+              name: "\u6E2C\u8A66\u8A18\u5E334-1",
+              amount: 500,
+              bonus: 0,
+              date: "2024/07/20",
+              created_at: "2024/07/23 00:00:00"
+            },
+            {
+              id: 7,
+              name: "\u6E2C\u8A66\u8A18\u5E334-2",
+              amount: 500,
+              bonus: 0,
+              date: "2024/07/10",
+              created_at: "2024/07/23 00:00:00"
+            }
+          ],
+          color: "#A8FF24",
+          created_at: "2024/07/23 00:10:00"
         }
       ]
     }
   },
   "2024/07": {
-    "currentId": 0,
-    "totalGoal": {
-      "current": {
-        "amount": 41914,
-        "bonus": 50020
+    currentId: 0,
+    totalGoal: {
+      current: {
+        amount: 41914,
+        bonus: 50020
       }
     },
-    "items": {
-      "unset": {
-        "name": "\u5176\u4ED6\u82B1\u8CBB",
-        "current": {
-          "amount": 9999,
-          "bonus": 0
+    items: {
+      unset: {
+        name: "\u5176\u4ED6\u82B1\u8CBB",
+        current: {
+          amount: 9999,
+          bonus: 0
         },
-        "accounting": [],
-        "unset": true
+        accounting: [],
+        unset: true
       },
-      "normal": [
+      normal: [
         {
-          "name": "\u540D\u5B57\u8D85\u9577\u7684\u6E2C\u8A666666666666666666666666666666666\u540D\u5B57\u8D85\u9577\u7684\u6E2C\u8A66GOGOGOGOGGGGGGGGGGGGGGGGGGGGGGGGGG",
-          "goal": {
-            "amount": 9250,
-            "bonus": 0
+          name: "\u540D\u5B57\u8D85\u9577\u7684\u6E2C\u8A666666666666666666666666666666666\u540D\u5B57\u8D85\u9577\u7684\u6E2C\u8A66GOGOGOGOGGGGGGGGGGGGGGGGGGGGGGGGGG",
+          goal: {
+            amount: 9250,
+            bonus: 0
           },
-          "current": {
-            "amount": 9250,
-            "bonus": 0
+          current: {
+            amount: 9250,
+            bonus: 0
           },
-          "accounting": [],
-          "color": "#A8FF24",
-          "created_at": "2024/07/23 00:00:00"
+          accounting: [],
+          color: "#A8FF24",
+          created_at: "2024/07/23 00:00:00"
         },
         {
-          "name": "\u79DF\u91D1",
-          "goal": {
-            "amount": 9250,
-            "bonus": 0
+          name: "\u79DF\u91D1",
+          goal: {
+            amount: 9250,
+            bonus: 0
           },
-          "current": {
-            "amount": 9250,
-            "bonus": 0
+          current: {
+            amount: 9250,
+            bonus: 0
           },
-          "accounting": [],
-          "color": "#84C1FF",
-          "created_at": "2024/07/23 01:00:00"
+          accounting: [],
+          color: "#84C1FF",
+          created_at: "2024/07/23 01:00:00"
         },
         {
-          "name": "\u96FB\u4FE1",
-          "goal": {
-            "amount": 799,
-            "bonus": 0
+          name: "\u96FB\u4FE1",
+          goal: {
+            amount: 799,
+            bonus: 0
           },
-          "current": {
-            "amount": 799,
-            "bonus": 0
+          current: {
+            amount: 799,
+            bonus: 0
           },
-          "accounting": [],
-          "color": "#7AFEC6",
-          "created_at": "2024/07/23 00:10:00"
+          accounting: [],
+          color: "#7AFEC6",
+          created_at: "2024/07/23 00:10:00"
         },
         {
-          "name": "\u6C34\u96FB",
-          "goal": {
-            "amount": 200,
-            "bonus": 100
+          name: "\u6C34\u96FB",
+          goal: {
+            amount: 200,
+            bonus: 100
           },
-          "current": {
-            "amount": 0,
-            "bonus": 20
+          current: {
+            amount: 0,
+            bonus: 20
           },
-          "accounting": [],
-          "color": "#A23400",
-          "created_at": "2024/07/23 02:00:00"
+          accounting: [],
+          color: "#A23400",
+          created_at: "2024/07/23 02:00:00"
         },
         {
-          "name": "\u7DB2\u8DEF",
-          "goal": {
-            "amount": 200,
-            "bonus": 100
+          name: "\u7DB2\u8DEF",
+          goal: {
+            amount: 200,
+            bonus: 100
           },
-          "current": {
-            "amount": 500,
-            "bonus": 0
+          current: {
+            amount: 500,
+            bonus: 0
           },
-          "accounting": [],
-          "color": "#D9B3B3",
-          "created_at": "2024/07/23 01:00:00"
+          accounting: [],
+          color: "#D9B3B3",
+          created_at: "2024/07/23 01:00:00"
         },
         {
-          "name": "\u5B78\u8CB8",
-          "goal": {
-            "amount": 0,
-            "bonus": 0
+          name: "\u5B78\u8CB8",
+          goal: {
+            amount: 0,
+            bonus: 0
           },
-          "current": {
-            "amount": 100,
-            "bonus": 0
+          current: {
+            amount: 100,
+            bonus: 0
           },
-          "accounting": [],
-          "color": "#A3D1D1",
-          "created_at": "2024/07/23 00:00:11"
+          accounting: [],
+          color: "#A3D1D1",
+          created_at: "2024/07/23 00:00:11"
         },
         {
-          "name": "\u9910\u8CBB",
-          "goal": {
-            "amount": 7500,
-            "bonus": 2500
+          name: "\u9910\u8CBB",
+          goal: {
+            amount: 7500,
+            bonus: 2500
           },
-          "current": {
-            "amount": 1e3,
-            "bonus": 5e4
+          current: {
+            amount: 1e3,
+            bonus: 5e4
           },
-          "accounting": [],
-          "color": "#B766AD",
-          "created_at": "2024/07/23 02:00:00"
+          accounting: [],
+          color: "#B766AD",
+          created_at: "2024/07/23 02:00:00"
         },
         {
-          "name": "\u5132\u84C4\u96AA",
-          "goal": {
-            "amount": 0,
-            "bonus": 0
+          name: "\u5132\u84C4\u96AA",
+          goal: {
+            amount: 0,
+            bonus: 0
           },
-          "current": {
-            "amount": 0,
-            "bonus": 0
+          current: {
+            amount: 0,
+            bonus: 0
           },
-          "accounting": [],
-          "color": "#0066CC",
-          "created_at": "2024/07/23 03:00:00"
+          accounting: [],
+          color: "#0066CC",
+          created_at: "2024/07/23 03:00:00"
         },
         {
-          "name": "\u5A1B\u6A02",
-          "goal": {
-            "amount": 4e3,
-            "bonus": 0
+          name: "\u5A1B\u6A02",
+          goal: {
+            amount: 4e3,
+            bonus: 0
           },
-          "current": {
-            "amount": 4e3,
-            "bonus": 0
+          current: {
+            amount: 4e3,
+            bonus: 0
           },
-          "accounting": [],
-          "color": "#F1E1FF",
-          "created_at": "2024/07/23 00:00:00"
+          accounting: [],
+          color: "#F1E1FF",
+          created_at: "2024/07/23 00:00:00"
         },
         {
-          "name": "\u4FDD\u96AA",
-          "goal": {
-            "amount": 1016,
-            "bonus": 0
+          name: "\u4FDD\u96AA",
+          goal: {
+            amount: 1016,
+            bonus: 0
           },
-          "current": {
-            "amount": 1016,
-            "bonus": 0
+          current: {
+            amount: 1016,
+            bonus: 0
           },
-          "accounting": [],
-          "color": "#930093",
-          "created_at": "2024/07/23 00:00:00"
+          accounting: [],
+          color: "#930093",
+          created_at: "2024/07/23 00:00:00"
         },
         {
-          "name": "\u9810\u5099\u91D1/\u5132\u84C4",
-          "goal": {
-            "amount": 4e3,
-            "bonus": 0
+          name: "\u9810\u5099\u91D1/\u5132\u84C4",
+          goal: {
+            amount: 4e3,
+            bonus: 0
           },
-          "current": {
-            "amount": 4e3,
-            "bonus": 0
+          current: {
+            amount: 4e3,
+            bonus: 0
           },
-          "accounting": [],
-          "color": "#FF0000",
-          "created_at": "2024/07/23 00:00:01"
+          accounting: [],
+          color: "#FF0000",
+          created_at: "2024/07/23 00:00:01"
         },
         {
-          "name": "\u5B5D\u89AA\u8CBB",
-          "goal": {
-            "amount": 2e3,
-            "bonus": 0
+          name: "\u5B5D\u89AA\u8CBB",
+          goal: {
+            amount: 2e3,
+            bonus: 0
           },
-          "current": {
-            "amount": 2e3,
-            "bonus": 0
+          current: {
+            amount: 2e3,
+            bonus: 0
           },
-          "accounting": [],
-          "color": "#5B5B5B",
-          "created_at": "2024/07/23 00:00:01"
+          accounting: [],
+          color: "#5B5B5B",
+          created_at: "2024/07/23 00:00:01"
         }
       ]
     }
@@ -3672,25 +3699,26 @@ function getDefault(formattedDate = null) {
     }
   };
 }
-var defaultStyle = {
-  "color": {
-    "theme": {
-      "default": "#005CFF"
-    },
-    "bar": {
-      "amount": "#FFFFFF",
-      "bonus": "#999999",
-      "background": "#666666",
-      "number": {
-        "default": "#FFFFFF",
-        "amountAlert": {
-          "middle": "#B8860B",
-          "warning": "#FFA500",
-          "danger": "#FF0000"
-        }
+const color = {
+  theme: {
+    "default": "#005CFF"
+  },
+  bar: {
+    amount: "#FFFFFF",
+    bonus: "#999999",
+    background: "#666666",
+    number: {
+      "default": "#FFFFFF",
+      amountAlert: {
+        middle: "#B8860B",
+        warning: "#FFA500",
+        danger: "#FF0000"
       }
     }
   }
+};
+var defaultStyle = {
+  color
 };
 function getBarColor(path) {
   let current = defaultStyle.color.bar;
@@ -5878,17 +5906,17 @@ async function initDataContent(DataValue2, UserSettingValue2) {
   renderDataContent(DataValue2, UserSettingValue2);
   renderUserSettingContent(UserSettingValue2);
 }
-function renderDataContent(data, { CurrentDateKey, ...param }) {
+function renderDataContent(data, { CurrentDateKey: CurrentDateKey2, ...param }) {
   const HomeContent = document.querySelector("#home-content");
   const mode = (param == null ? void 0 : param.Mode) ? param.Mode : "t-mode";
   const showType = (param == null ? void 0 : param.ShowType) ? param.ShowType : "number";
   let d;
-  if (!CurrentDateKey) {
+  if (!CurrentDateKey2) {
     const keyArray = Object.keys(data);
     const lastKey = keyArray[keyArray.length - 1];
     d = data[lastKey];
   } else {
-    d = data[CurrentDateKey];
+    d = data[CurrentDateKey2];
   }
   let html = renderItemsHTML(d, mode);
   HomeContent.innerHTML = html;
@@ -6236,16 +6264,16 @@ function renderGoalDetailModal(targetName, data) {
 }
 function renderUserSettingContent(userSetting) {
   const SettingContent = document.querySelector("#setting-content");
-  const HomeLocation = SettingContent.querySelector("#HomeLocation");
-  const Mode = SettingContent.querySelector("#Mode");
-  const ShowType = SettingContent.querySelector("#ShowType");
-  const NewItemPosition = SettingContent.querySelector("#NewItemPosition");
-  const DebugMode = SettingContent.querySelector("#DebugMode");
-  HomeLocation.checked = userSetting.HomeLocation == "home" ? true : false;
-  Mode.checked = userSetting.Mode == "t-mode" ? true : false;
-  ShowType.checked = userSetting.ShowType == "number" ? true : false;
-  NewItemPosition.checked = userSetting.NewItemPosition == "top" ? true : false;
-  DebugMode.checked = userSetting.DebugMode;
+  const HomeLocation2 = SettingContent.querySelector("#HomeLocation");
+  const Mode2 = SettingContent.querySelector("#Mode");
+  const ShowType2 = SettingContent.querySelector("#ShowType");
+  const NewItemPosition2 = SettingContent.querySelector("#NewItemPosition");
+  const DebugMode2 = SettingContent.querySelector("#DebugMode");
+  HomeLocation2.checked = userSetting.HomeLocation == "home" ? true : false;
+  Mode2.checked = userSetting.Mode == "t-mode" ? true : false;
+  ShowType2.checked = userSetting.ShowType == "number" ? true : false;
+  NewItemPosition2.checked = userSetting.NewItemPosition == "top" ? true : false;
+  DebugMode2.checked = userSetting.DebugMode;
 }
 function debugMode(debugMode2) {
   let debug_items = document.querySelectorAll(".debug");
@@ -6836,8 +6864,8 @@ class ColorPickr {
     if (onSave && typeof onSave == "function")
       this.pickr.on("change", onSave);
   }
-  setColor(color) {
-    this.pickr.setColor(color);
+  setColor(color2) {
+    this.pickr.setColor(color2);
   }
   getColor() {
     return `#${this.pickr.getColor().toHEXA().join("").toString()}`;
@@ -6851,9 +6879,9 @@ class ColorPickr {
       return arr;
     }, []);
   }
-  addSwatch(color) {
-    if (!this.getSwatches().includes(color.toUpperCase())) {
-      this.pickr.addSwatch(color);
+  addSwatch(color2) {
+    if (!this.getSwatches().includes(color2.toUpperCase())) {
+      this.pickr.addSwatch(color2);
     }
   }
   removeSwatch(index2) {
@@ -7002,10 +7030,10 @@ async function initEventListener() {
         PickrModal_bs.hide();
       },
       onChange: (c) => {
-        const color = `#${c.toHEXA().join("").toString()}`;
+        const color2 = `#${c.toHEXA().join("").toString()}`;
         const btn = document.querySelector(".pcr-button");
-        Pickr2.setColor(color);
-        btn.style.setProperty("--pcr-color", color);
+        Pickr2.setColor(color2);
+        btn.style.setProperty("--pcr-color", color2);
       }
     }
   });
@@ -7779,7 +7807,7 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
       case "jeep-sqlite":
         return __vitePreload(() => import(
           /* webpackMode: "lazy" */
-          "./jeep-sqlite.entry.f1a4fa7e.js"
+          "./jeep-sqlite.entry.cc8802ae.js"
         ), true ? [] : void 0).then(processMod, consoleError);
     }
   }
@@ -8829,7 +8857,7 @@ const defineCustomElements = async (win2, options) => {
   }
 })();
 registerPlugin("CapacitorSQLite", {
-  web: () => __vitePreload(() => import("./web.3d256291.js"), true ? [] : void 0).then((m) => new m.CapacitorSQLiteWeb()),
+  web: () => __vitePreload(() => import("./web.ad2e82fc.js"), true ? [] : void 0).then((m) => new m.CapacitorSQLiteWeb()),
   electron: () => window.CapacitorCustomPlatform.plugins.CapacitorSQLite
 });
 defineCustomElements();
